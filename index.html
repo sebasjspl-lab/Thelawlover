@@ -3,721 +3,774 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Law Lover - Derecho Penal Sustancial</title>
-<meta name="description" content="Derecho Penal Colombiano interactivo basado en la Ley 599 de 2000. Estructura del delito, penas, causales de ausencia de responsabilidad y mas.">
+<title>The Law Lover - Derecho Penal Colombiano</title>
+<meta name="description" content="Ley 599 de 2000 y Ley 906 de 2004 explicadas de forma interactiva. Estructura del delito, proceso penal, herramientas y mas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --blanco:#FAFAF8;
-  --papel:#F4F1EC;
-  --papel2:#EDE8DF;
-  --borde:#DDD8CF;
-  --borde2:#C8C2B6;
-  --texto:#1A1814;
-  --texto2:#3D3A35;
-  --texto3:#6B6760;
-  --acento:#8B2E2E;
-  --acento2:#A63535;
-  --acento-dim:rgba(139,46,46,.08);
-  --acento-dim2:rgba(139,46,46,.14);
-  --verde:#2E6B3E;
-  --verde-dim:rgba(46,107,62,.08);
-  --azul:#1E4A7A;
-  --azul-dim:rgba(30,74,122,.08);
-  --amarillo:#7A5C1E;
-  --amarillo-dim:rgba(122,92,30,.08);
-  --sombra:0 1px 3px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.04);
-  --sombra2:0 2px 8px rgba(0,0,0,.08),0 8px 24px rgba(0,0,0,.06);
+  --blanco:#FAFAF8; --papel:#F5F1EB; --papel2:#EDE8DF; --borde:#DDD8CF; --borde2:#C8C2B6;
+  --texto:#1A1814; --texto2:#3D3A35; --texto3:#6B6760;
+  --rojo:#8B2E2E; --rojo2:#A63535; --rojo-dim:rgba(139,46,46,.08); --rojo-dim2:rgba(139,46,46,.15);
+  --azul:#1E4A7A; --azul2:#245a94; --azul-dim:rgba(30,74,122,.08); --azul-dim2:rgba(30,74,122,.15);
+  --verde:#2E6B3E; --verde-dim:rgba(46,107,62,.08);
+  --amarillo:#7A5C1E; --amarillo-dim:rgba(122,92,30,.09);
+  --morado:#5B2D8E; --morado-dim:rgba(91,45,142,.08);
+  --sombra:0 1px 4px rgba(0,0,0,.07),0 4px 14px rgba(0,0,0,.05);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px}
+html{scroll-behavior:smooth}
 body{background:var(--blanco);color:var(--texto);font-family:"Source Sans 3",sans-serif;font-weight:400;line-height:1.65;overflow-x:hidden}
 
-/* NAV */
-nav{position:sticky;top:0;z-index:200;background:rgba(250,250,248,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--borde);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:56px}
-.nav-logo{font-family:"Lora",serif;font-size:16px;font-weight:700;color:var(--acento);text-decoration:none;letter-spacing:.01em}
-.nav-logo span{color:var(--texto);font-style:italic}
-.nav-links{display:flex;gap:0;list-style:none}
-.nav-links a{font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--texto3);text-decoration:none;padding:8px 14px;border-radius:4px;transition:all .2s}
-.nav-links a:hover{color:var(--acento);background:var(--acento-dim)}
-.nav-links a.active{color:var(--acento);background:var(--acento-dim)}
-.nav-badge{font-family:"JetBrains Mono",monospace;font-size:10px;background:var(--acento);color:white;padding:3px 10px;border-radius:20px;letter-spacing:.04em}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
-.hamburger span{width:20px;height:1.5px;background:var(--texto);border-radius:1px}
-.mobile-menu{display:none;position:fixed;inset:0;background:rgba(250,250,248,.98);z-index:300;flex-direction:column;align-items:center;justify-content:center;gap:28px}
-.mobile-menu.open{display:flex}
-.mobile-menu a{font-size:20px;font-weight:500;color:var(--texto);text-decoration:none;letter-spacing:.06em}
-.mobile-menu a:hover{color:var(--acento)}
-.mobile-close{position:absolute;top:20px;right:24px;font-size:24px;background:none;border:none;cursor:pointer;color:var(--texto3)}
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:300;background:rgba(250,250,248,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--borde);height:54px;display:flex;align-items:center;padding:0 28px;gap:20px}
+.nav-logo{font-family:"Lora",serif;font-size:15px;font-weight:700;color:var(--rojo);text-decoration:none;white-space:nowrap}
+.nav-logo span{font-style:italic;color:var(--texto)}
+.nav-tabs{display:flex;gap:2px;list-style:none;flex:1;justify-content:center}
+.nav-tabs a{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--texto3);text-decoration:none;padding:6px 12px;border-radius:5px;transition:all .2s;white-space:nowrap}
+.nav-tabs a:hover{color:var(--rojo);background:var(--rojo-dim)}
+.nav-tabs a.act{color:var(--rojo);background:var(--rojo-dim);font-weight:600}
+.nav-tabs a.azul:hover,.nav-tabs a.azul.act{color:var(--azul);background:var(--azul-dim)}
+.nav-badge{font-family:"JetBrains Mono",monospace;font-size:9px;padding:3px 10px;border-radius:20px;letter-spacing:.04em;white-space:nowrap}
+.nav-badge.rojo{background:var(--rojo);color:white}
+.nav-badge.azul{background:var(--azul);color:white}
+.hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;margin-left:auto}
+.hamburger span{width:20px;height:1.5px;background:var(--texto);border-radius:1px;display:block}
+.mob-menu{display:none;position:fixed;inset:0;background:rgba(250,250,248,.98);z-index:400;flex-direction:column;align-items:center;justify-content:center;gap:22px}
+.mob-menu.open{display:flex}
+.mob-menu a{font-size:18px;font-weight:500;color:var(--texto);text-decoration:none}
+.mob-menu a:hover{color:var(--rojo)}
+.mob-close{position:absolute;top:18px;right:22px;font-size:22px;background:none;border:none;cursor:pointer;color:var(--texto3)}
 
-/* HERO */
-.hero{background:var(--papel);border-bottom:1px solid var(--borde);padding:72px 32px 64px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 31px,var(--borde) 31px,var(--borde) 32px);opacity:.25}
-.hero-inner{position:relative;z-index:1;max-width:760px;margin:0 auto}
-.hero-kicker{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--acento);margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:12px}
-.hero-kicker::before,.hero-kicker::after{content:"";width:32px;height:1px;background:var(--acento);opacity:.5}
-.hero-title{font-family:"Lora",serif;font-size:clamp(36px,6vw,64px);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:20px;color:var(--texto)}
-.hero-title em{font-style:italic;color:var(--acento)}
-.hero-sub{font-size:17px;font-weight:300;color:var(--texto3);max-width:520px;margin:0 auto 36px;line-height:1.75}
-.hero-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:40px}
-.chip{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:20px;border:1px solid var(--borde2);color:var(--texto3);background:white;cursor:pointer;transition:all .2s;text-decoration:none}
-.chip:hover,.chip.active{background:var(--acento);color:white;border-color:var(--acento)}
-.hero-ley{display:inline-flex;align-items:center;gap:10px;background:white;border:1px solid var(--borde);border-radius:8px;padding:10px 20px;font-size:13px;color:var(--texto3);box-shadow:var(--sombra)}
-.hero-ley strong{color:var(--acento);font-weight:600}
+/* ── HERO ── */
+.hero{padding:64px 28px 56px;text-align:center;background:var(--papel);border-bottom:1px solid var(--borde);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 31px,var(--borde) 31px,var(--borde) 32px);opacity:.18}
+.hero-inner{position:relative;z-index:1;max-width:720px;margin:0 auto}
+.hero-kicker{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--rojo);margin-bottom:18px;display:flex;align-items:center;justify-content:center;gap:10px}
+.hero-kicker::before,.hero-kicker::after{content:"";width:28px;height:1px;background:var(--rojo);opacity:.5}
+.hero-h1{font-family:"Lora",serif;font-size:clamp(34px,6vw,60px);font-weight:700;line-height:1.08;letter-spacing:-.02em;margin-bottom:18px}
+.hero-h1 em{font-style:italic;color:var(--rojo)}
+.hero-sub{font-size:16px;font-weight:300;color:var(--texto3);max-width:500px;margin:0 auto 36px;line-height:1.75}
+.leyes-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.ley-pill{display:flex;align-items:center;gap:10px;background:white;border:1px solid var(--borde);border-radius:10px;padding:12px 20px;box-shadow:var(--sombra);cursor:pointer;text-decoration:none;transition:all .2s}
+.ley-pill:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.ley-pill.rojo:hover{border-color:var(--rojo)}
+.ley-pill.azul:hover{border-color:var(--azul)}
+.ley-num{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:500;letter-spacing:.04em}
+.ley-num.rojo{color:var(--rojo)}
+.ley-num.azul{color:var(--azul)}
+.ley-name{font-size:13px;font-weight:500;color:var(--texto2)}
+.ley-desc{font-size:11px;color:var(--texto3)}
+.hero-chips{display:flex;flex-wrap:wrap;gap:7px;justify-content:center}
+.chip{font-size:11px;padding:5px 13px;border-radius:20px;border:1px solid var(--borde2);color:var(--texto3);background:white;cursor:pointer;text-decoration:none;transition:all .2s;white-space:nowrap}
+.chip:hover{background:var(--rojo);color:white;border-color:var(--rojo)}
+.chip.azul:hover{background:var(--azul);color:white;border-color:var(--azul)}
 
-/* LAYOUT */
-.page-wrap{max-width:1100px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:240px 1fr;gap:40px;align-items:start}
-.sidebar{position:sticky;top:72px;padding:32px 0}
-.sidebar-title{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--texto3);margin-bottom:16px;padding-left:4px}
-.sidebar-nav{list-style:none;display:flex;flex-direction:column;gap:2px}
-.sidebar-nav a{display:block;font-size:13px;color:var(--texto3);text-decoration:none;padding:7px 12px;border-radius:6px;border-left:2px solid transparent;transition:all .2s;line-height:1.3}
-.sidebar-nav a:hover{color:var(--acento);background:var(--acento-dim);border-left-color:var(--acento)}
-.sidebar-nav a.active{color:var(--acento);background:var(--acento-dim);border-left-color:var(--acento);font-weight:500}
-.sidebar-sep{height:1px;background:var(--borde);margin:12px 0}
-.sidebar-nav .sub{padding-left:22px;font-size:12px}
-.main-content{padding:40px 0 80px;min-width:0}
+/* ── READING BAR ── */
+.rbar{position:fixed;top:0;left:0;height:2px;background:var(--rojo);z-index:999;width:0%;transition:width .1s linear}
 
-/* SECCION */
-.seccion{margin-bottom:64px;scroll-margin-top:72px}
-.seccion-header{margin-bottom:32px}
-.seccion-num{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.12em;color:var(--acento);margin-bottom:8px;display:flex;align-items:center;gap:10px}
-.seccion-num::after{content:"";flex:1;height:1px;background:var(--borde)}
-.seccion-titulo{font-family:"Lora",serif;font-size:clamp(24px,3.5vw,34px);font-weight:700;line-height:1.15;color:var(--texto);margin-bottom:12px}
-.seccion-titulo em{font-style:italic;color:var(--acento)}
-.seccion-intro{font-size:15px;color:var(--texto3);line-height:1.75;max-width:620px}
+/* ── LAYOUT ── */
+.wrap{max-width:1060px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:220px 1fr;gap:36px;align-items:start}
+.sidebar{position:sticky;top:62px;padding:28px 0 60px}
+.sb-title{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--texto3);margin-bottom:12px;padding-left:4px}
+.sb-nav{list-style:none;display:flex;flex-direction:column;gap:1px}
+.sb-nav a{display:block;font-size:12px;color:var(--texto3);text-decoration:none;padding:6px 10px;border-radius:5px;border-left:2px solid transparent;transition:all .2s;line-height:1.3}
+.sb-nav a:hover{color:var(--rojo);background:var(--rojo-dim);border-left-color:var(--rojo)}
+.sb-nav a.act{color:var(--rojo);background:var(--rojo-dim);border-left-color:var(--rojo);font-weight:500}
+.sb-nav a.azul:hover,.sb-nav a.azul.act{color:var(--azul);background:var(--azul-dim);border-left-color:var(--azul)}
+.sb-nav a.sub{padding-left:20px;font-size:11px}
+.sb-sep{height:1px;background:var(--borde);margin:10px 0}
+.sb-badge{font-family:"JetBrains Mono",monospace;font-size:8px;padding:2px 6px;border-radius:3px;margin-left:6px;vertical-align:middle}
+.sb-badge.r{background:var(--rojo-dim2);color:var(--rojo)}
+.sb-badge.a{background:var(--azul-dim2);color:var(--azul)}
+.main{padding:36px 0 80px;min-width:0}
 
-/* CARDS CONCEPTO */
-.concepto-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--borde);border:1px solid var(--borde);border-radius:10px;overflow:hidden;margin-bottom:24px}
-.concepto-card{background:white;padding:24px;transition:background .2s}
-.concepto-card:hover{background:var(--papel)}
-.concepto-icon{font-size:22px;margin-bottom:12px}
-.concepto-nombre{font-family:"Lora",serif;font-size:16px;font-weight:700;color:var(--texto);margin-bottom:8px}
-.concepto-def{font-size:13px;color:var(--texto3);line-height:1.65}
-.concepto-art{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--acento);margin-top:10px;letter-spacing:.04em}
+/* ── LEY HEADER ── */
+.ley-header{display:flex;align-items:center;gap:14px;padding:16px 20px;border-radius:10px;margin-bottom:36px;border:1px solid}
+.ley-header.rojo{background:var(--rojo-dim);border-color:rgba(139,46,46,.2)}
+.ley-header.azul{background:var(--azul-dim);border-color:rgba(30,74,122,.2)}
+.ley-header-num{font-family:"JetBrains Mono",monospace;font-size:28px;font-weight:500;line-height:1}
+.ley-header-num.rojo{color:var(--rojo)}
+.ley-header-num.azul{color:var(--azul)}
+.ley-header-info{}
+.ley-header-name{font-size:15px;font-weight:600;color:var(--texto);margin-bottom:3px}
+.ley-header-desc{font-size:12px;color:var(--texto3)}
 
-/* ACCORDION */
-.accordion{border:1px solid var(--borde);border-radius:10px;overflow:hidden;margin-bottom:16px}
-.accordion-item{border-bottom:1px solid var(--borde)}
-.accordion-item:last-child{border-bottom:none}
-.accordion-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:18px 22px;background:white;border:none;cursor:pointer;text-align:left;transition:background .2s;gap:12px}
-.accordion-btn:hover{background:var(--papel)}
-.accordion-btn.open{background:var(--acento-dim)}
-.accordion-label{font-size:14px;font-weight:600;color:var(--texto);line-height:1.3}
-.accordion-sub{font-size:11px;color:var(--texto3);margin-top:3px;font-weight:400}
-.accordion-art{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--acento);white-space:nowrap}
-.accordion-icon{font-size:18px;color:var(--texto3);transition:transform .25s;flex-shrink:0}
-.accordion-btn.open .accordion-icon{transform:rotate(45deg);color:var(--acento)}
-.accordion-body{display:none;padding:0 22px 22px;background:white}
-.accordion-btn.open+.accordion-body{display:block}
+/* ── SECCION ── */
+.sec{margin-bottom:60px;scroll-margin-top:62px}
+.sec-num{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.12em;color:var(--rojo);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.sec-num.azul{color:var(--azul)}
+.sec-num::after{content:"";flex:1;height:1px;background:var(--borde)}
+.sec-h{font-family:"Lora",serif;font-size:clamp(22px,3vw,32px);font-weight:700;line-height:1.15;color:var(--texto);margin-bottom:12px}
+.sec-h em{font-style:italic;color:var(--rojo)}
+.sec-h em.azul{color:var(--azul)}
+.sec-intro{font-size:14px;color:var(--texto3);line-height:1.75;max-width:600px;margin-bottom:28px}
 
-/* CONTENT BLOCKS */
-.bloque{background:var(--papel);border-left:3px solid var(--acento);border-radius:0 8px 8px 0;padding:18px 20px;margin-bottom:16px;font-size:14px;line-height:1.7;color:var(--texto2)}
-.bloque strong{color:var(--acento);font-weight:600}
-.bloque.verde{border-left-color:var(--verde);background:var(--verde-dim)}
-.bloque.verde strong{color:var(--verde)}
-.bloque.azul{border-left-color:var(--azul);background:var(--azul-dim)}
-.bloque.azul strong{color:var(--azul)}
-.bloque.amarillo{border-left-color:var(--amarillo);background:var(--amarillo-dim)}
-.bloque.amarillo strong{color:var(--amarillo)}
+/* ── CARDS ── */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--borde);border:1px solid var(--borde);border-radius:10px;overflow:hidden;margin-bottom:20px}
+.ccard{background:white;padding:20px;transition:background .2s}
+.ccard:hover{background:var(--papel)}
+.cicon{font-size:20px;margin-bottom:10px}
+.cname{font-family:"Lora",serif;font-size:15px;font-weight:700;color:var(--texto);margin-bottom:6px}
+.cdef{font-size:12px;color:var(--texto3);line-height:1.6}
+.cart{font-family:"JetBrains Mono",monospace;font-size:9px;color:var(--rojo);margin-top:8px;letter-spacing:.04em}
+.cart.azul{color:var(--azul)}
 
-.ejemplo{background:var(--papel2);border:1px solid var(--borde2);border-radius:8px;padding:18px 20px;margin:16px 0;font-size:13px;line-height:1.7;color:var(--texto2)}
-.ejemplo-label{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--acento);margin-bottom:8px;display:flex;align-items:center;gap:6px}
-.ejemplo-label::before{content:"EJEMPLO PRACTICO";font-size:9px}
+/* ── ACORDEON ── */
+.acc{border:1px solid var(--borde);border-radius:10px;overflow:hidden;margin-bottom:14px}
+.acc-item{border-bottom:1px solid var(--borde)}
+.acc-item:last-child{border-bottom:none}
+.acc-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:15px 18px;background:white;border:none;cursor:pointer;text-align:left;transition:background .2s;gap:10px}
+.acc-btn:hover,.acc-btn.open{background:var(--papel)}
+.acc-btn.open{background:var(--rojo-dim)}
+.acc-btn.open.azul{background:var(--azul-dim)}
+.acc-label{font-size:13px;font-weight:600;color:var(--texto);line-height:1.3}
+.acc-sub{font-size:11px;color:var(--texto3);margin-top:2px;font-weight:400}
+.acc-art{font-family:"JetBrains Mono",monospace;font-size:9px;color:var(--rojo);white-space:nowrap}
+.acc-art.azul{color:var(--azul)}
+.acc-icon{font-size:16px;color:var(--texto3);transition:transform .25s;flex-shrink:0}
+.acc-btn.open .acc-icon{transform:rotate(45deg);color:var(--rojo)}
+.acc-btn.open.azul .acc-icon{color:var(--azul)}
+.acc-body{display:none;padding:0 18px 18px;background:white;font-size:13px;color:var(--texto2);line-height:1.7}
+.acc-btn.open+.acc-body{display:block}
 
-.norma{font-family:"JetBrains Mono",monospace;font-size:12px;background:var(--papel);border:1px solid var(--borde);border-radius:6px;padding:14px 16px;margin:12px 0;color:var(--texto2);line-height:1.6;white-space:pre-wrap}
-.norma-ref{font-size:10px;color:var(--texto3);margin-top:8px;letter-spacing:.04em}
+/* ── BLOQUES ── */
+.blq{border-left:3px solid var(--rojo);background:var(--rojo-dim);border-radius:0 8px 8px 0;padding:14px 16px;margin:12px 0;font-size:13px;line-height:1.7;color:var(--texto2)}
+.blq strong{color:var(--rojo);font-weight:600}
+.blq.verde{border-left-color:var(--verde);background:var(--verde-dim)}
+.blq.verde strong{color:var(--verde)}
+.blq.azul{border-left-color:var(--azul);background:var(--azul-dim)}
+.blq.azul strong{color:var(--azul)}
+.blq.amarillo{border-left-color:var(--amarillo);background:var(--amarillo-dim)}
+.blq.amarillo strong{color:var(--amarillo)}
+.blq.morado{border-left-color:var(--morado);background:var(--morado-dim)}
+.blq.morado strong{color:var(--morado)}
 
-.lista-concepto{list-style:none;margin:12px 0;display:flex;flex-direction:column;gap:8px}
-.lista-concepto li{display:flex;gap:10px;font-size:14px;color:var(--texto2);line-height:1.5;padding:10px 14px;background:var(--papel);border-radius:6px;border:1px solid var(--borde)}
-.lista-concepto li::before{content:"›";color:var(--acento);font-weight:700;font-size:16px;flex-shrink:0;margin-top:1px}
+.ej{background:var(--papel2);border:1px solid var(--borde2);border-radius:8px;padding:14px 16px;margin:12px 0;font-size:13px;line-height:1.7;color:var(--texto2)}
+.ej-lbl{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--rojo);margin-bottom:6px}
+.ej-lbl.azul{color:var(--azul)}
 
-/* QUIZ */
-.quiz-wrap{background:var(--papel);border:1px solid var(--borde);border-radius:12px;padding:28px;margin-top:16px}
-.quiz-preg{font-family:"Lora",serif;font-size:16px;font-weight:600;color:var(--texto);margin-bottom:20px;line-height:1.4}
-.quiz-opciones{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
-.quiz-opt{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border:1.5px solid var(--borde);border-radius:8px;cursor:pointer;background:white;transition:all .2s;font-size:14px;color:var(--texto2);text-align:left;width:100%}
-.quiz-opt:hover{border-color:var(--acento);background:var(--acento-dim)}
-.quiz-opt.correcto{border-color:var(--verde);background:var(--verde-dim);color:var(--verde)}
-.quiz-opt.incorrecto{border-color:#C0392B;background:rgba(192,57,43,.06);color:#C0392B}
-.quiz-opt-letra{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;width:20px;flex-shrink:0;margin-top:1px}
-.quiz-feedback{font-size:13px;padding:12px 16px;border-radius:8px;display:none;line-height:1.6}
-.quiz-feedback.ok{background:var(--verde-dim);color:var(--verde);border:1px solid rgba(46,107,62,.2)}
-.quiz-feedback.mal{background:rgba(192,57,43,.06);color:#C0392B;border:1px solid rgba(192,57,43,.2)}
-.quiz-feedback.show{display:block}
-.quiz-btn{margin-top:14px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:9px 20px;border-radius:6px;border:1px solid var(--borde);background:white;cursor:pointer;color:var(--texto3);font-family:inherit;transition:all .2s}
-.quiz-btn:hover{border-color:var(--acento);color:var(--acento)}
+.norma{font-family:"JetBrains Mono",monospace;font-size:11px;background:var(--papel);border:1px solid var(--borde);border-radius:6px;padding:12px 14px;margin:10px 0;color:var(--texto2);line-height:1.6;white-space:pre-wrap}
 
-/* TABLA PENAS */
-.tabla-wrap{overflow-x:auto;margin:16px 0;border-radius:10px;border:1px solid var(--borde)}
-.tabla{width:100%;border-collapse:collapse;font-size:13px}
-.tabla th{background:var(--acento);color:white;padding:11px 14px;text-align:left;font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
-.tabla td{padding:10px 14px;border-bottom:1px solid var(--borde);color:var(--texto2);vertical-align:top;line-height:1.5}
+.lista{list-style:none;margin:10px 0;display:flex;flex-direction:column;gap:6px}
+.lista li{display:flex;gap:8px;font-size:13px;color:var(--texto2);line-height:1.5;padding:9px 12px;background:var(--papel);border-radius:6px;border:1px solid var(--borde)}
+.lista li::before{content:"›";color:var(--rojo);font-weight:700;font-size:15px;flex-shrink:0}
+.lista.azul li::before{color:var(--azul)}
+
+/* ── TABLA ── */
+.twrap{overflow-x:auto;margin:14px 0;border-radius:10px;border:1px solid var(--borde)}
+.tabla{width:100%;border-collapse:collapse;font-size:12px}
+.tabla th{background:var(--rojo);color:white;padding:10px 13px;text-align:left;font-weight:600;font-size:10px;letter-spacing:.07em;text-transform:uppercase}
+.tabla th.azul{background:var(--azul)}
+.tabla td{padding:9px 13px;border-bottom:1px solid var(--borde);color:var(--texto2);vertical-align:top;line-height:1.5}
 .tabla tr:last-child td{border-bottom:none}
 .tabla tr:hover td{background:var(--papel)}
 .tabla td:first-child{font-weight:600;color:var(--texto)}
-.tag-pena{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:9px;padding:2px 7px;border-radius:3px;letter-spacing:.04em}
-.tag-pena.principal{background:var(--acento-dim);color:var(--acento)}
-.tag-pena.sustitutiva{background:var(--azul-dim);color:var(--azul)}
-.tag-pena.accesoria{background:var(--amarillo-dim);color:var(--amarillo)}
+.tag{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:8px;padding:2px 6px;border-radius:3px;letter-spacing:.04em}
+.tag.r{background:var(--rojo-dim2);color:var(--rojo)}
+.tag.a{background:var(--azul-dim2);color:var(--azul)}
+.tag.g{background:var(--verde-dim);color:var(--verde)}
+.tag.y{background:var(--amarillo-dim);color:var(--amarillo)}
 
-/* CALCULADORA */
-.calc-card{background:white;border:1px solid var(--borde);border-radius:12px;padding:32px;box-shadow:var(--sombra)}
-.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.calc-field{margin-bottom:0}
-.calc-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--texto3);margin-bottom:8px;display:block}
-.calc-input,.calc-select{width:100%;background:var(--papel);border:1.5px solid var(--borde);border-radius:6px;color:var(--texto);font-family:"Source Sans 3",sans-serif;font-size:14px;padding:11px 14px;outline:none;transition:border-color .2s;-webkit-appearance:none}
-.calc-input:focus,.calc-select:focus{border-color:var(--acento);background:white}
-.calc-select option{background:white}
-.calc-btn{width:100%;background:var(--acento);color:white;border:none;border-radius:6px;font-family:"Source Sans 3",sans-serif;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:14px;cursor:pointer;transition:all .2s;margin-top:16px}
-.calc-btn:hover{background:var(--acento2);box-shadow:0 4px 14px rgba(139,46,46,.25)}
-.calc-result{margin-top:24px;border-top:1px solid var(--borde);padding-top:20px;display:none}
-.calc-result.visible{display:block}
-.result-row{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--borde)}
-.result-row:last-child{border-bottom:none}
-.result-key{font-size:12px;color:var(--texto3)}
-.result-val{font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:500;color:var(--texto)}
-.result-val.ok{color:var(--verde)}
-.result-val.warn{color:#C0392B}
-.calc-nota{font-size:11px;color:var(--texto3);margin-top:14px;line-height:1.65;font-style:italic;padding-top:12px;border-top:1px solid var(--borde)}
+/* ── LINEA DE TIEMPO ── */
+.timeline{position:relative;padding-left:28px;margin:20px 0}
+.timeline::before{content:"";position:absolute;left:10px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--azul),var(--azul-dim2))}
+.tl-item{position:relative;margin-bottom:20px}
+.tl-dot{position:absolute;left:-23px;top:4px;width:14px;height:14px;border-radius:50%;border:2px solid var(--azul);background:white;display:flex;align-items:center;justify-content:center}
+.tl-dot.done{background:var(--azul)}
+.tl-num{font-family:"JetBrains Mono",monospace;font-size:7px;color:white}
+.tl-body{background:white;border:1px solid var(--borde);border-radius:8px;padding:14px 16px;cursor:pointer;transition:all .2s}
+.tl-body:hover{border-color:var(--azul);background:var(--azul-dim)}
+.tl-body.open{border-color:var(--azul);background:var(--azul-dim)}
+.tl-header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.tl-etapa{font-size:13px;font-weight:600;color:var(--texto)}
+.tl-art{font-family:"JetBrains Mono",monospace;font-size:9px;color:var(--azul)}
+.tl-desc{font-size:12px;color:var(--texto3);margin-top:4px}
+.tl-detail{display:none;margin-top:12px;border-top:1px solid var(--borde);padding-top:12px;font-size:12px;color:var(--texto2);line-height:1.65}
+.tl-body.open .tl-detail{display:block}
 
-/* FOOTER */
-footer{background:var(--papel);border-top:1px solid var(--borde);padding:40px 32px 28px;text-align:center}
-.footer-logo{font-family:"Lora",serif;font-size:18px;font-weight:700;color:var(--acento);margin-bottom:8px}
-.footer-logo span{font-style:italic;color:var(--texto)}
-.footer-note{font-size:12px;color:var(--texto3);max-width:500px;margin:0 auto;line-height:1.6}
-.footer-copy{font-size:11px;color:var(--borde2);margin-top:20px}
+/* ── QUIZ ── */
+.quiz{background:var(--papel);border:1px solid var(--borde);border-radius:12px;padding:24px;margin-top:14px}
+.quiz-q{font-family:"Lora",serif;font-size:15px;font-weight:600;color:var(--texto);margin-bottom:18px;line-height:1.4}
+.quiz-opts{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
+.quiz-opt{display:flex;align-items:flex-start;gap:10px;padding:11px 14px;border:1.5px solid var(--borde);border-radius:7px;cursor:pointer;background:white;transition:all .2s;font-size:13px;color:var(--texto2);text-align:left;width:100%;font-family:inherit}
+.quiz-opt:hover{border-color:var(--rojo);background:var(--rojo-dim)}
+.quiz-opt.azul:hover{border-color:var(--azul);background:var(--azul-dim)}
+.quiz-opt.ok{border-color:var(--verde);background:var(--verde-dim);color:var(--verde)}
+.quiz-opt.mal{border-color:#C0392B;background:rgba(192,57,43,.06);color:#C0392B}
+.quiz-letra{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:600;width:18px;flex-shrink:0;margin-top:1px}
+.quiz-fb{font-size:12px;padding:10px 14px;border-radius:7px;display:none;line-height:1.6;margin-top:6px}
+.quiz-fb.ok{background:var(--verde-dim);color:var(--verde);border:1px solid rgba(46,107,62,.2);display:block}
+.quiz-fb.mal{background:rgba(192,57,43,.06);color:#C0392B;border:1px solid rgba(192,57,43,.2);display:block}
+.quiz-reset{margin-top:12px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:7px 16px;border-radius:5px;border:1px solid var(--borde);background:white;cursor:pointer;color:var(--texto3);font-family:inherit;transition:all .2s}
+.quiz-reset:hover{border-color:var(--rojo);color:var(--rojo)}
 
-/* PROGRESS BAR TOP */
-.reading-bar{position:fixed;top:0;left:0;height:2px;background:var(--acento);z-index:999;transition:width .1s linear;width:0%}
+/* ── GLOSARIO ── */
+.glos-search{width:100%;padding:11px 14px;border:1.5px solid var(--borde);border-radius:8px;font-size:14px;font-family:inherit;color:var(--texto);background:white;outline:none;margin-bottom:16px;transition:border-color .2s}
+.glos-search:focus{border-color:var(--rojo)}
+.glos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.glos-item{background:white;border:1px solid var(--borde);border-radius:8px;padding:14px;transition:border-color .2s}
+.glos-item:hover{border-color:var(--rojo)}
+.glos-term{font-family:"Lora",serif;font-size:14px;font-weight:700;color:var(--texto);margin-bottom:5px}
+.glos-def{font-size:12px;color:var(--texto3);line-height:1.6}
+.glos-art{font-family:"JetBrains Mono",monospace;font-size:9px;color:var(--rojo);margin-top:6px}
+.glos-item.hidden{display:none}
 
-/* RESPONSIVE */
-@media(max-width:900px){
-  .page-wrap{grid-template-columns:1fr;gap:0}
-  .sidebar{display:none}
-}
-@media(max-width:640px){
-  nav{padding:0 16px}
-  .nav-links,.nav-badge{display:none}
-  .hamburger{display:flex}
-  .hero{padding:56px 20px 48px}
-  .page-wrap{padding:0 16px}
-  .calc-grid{grid-template-columns:1fr}
-  .concepto-grid{grid-template-columns:1fr}
+/* ── COMPARADOR ── */
+.comp-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--borde);border-radius:10px;overflow:hidden}
+.comp-col{padding:0}
+.comp-header{padding:14px 18px;text-align:center;font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:500;letter-spacing:.06em}
+.comp-header.rojo{background:var(--rojo);color:white}
+.comp-header.azul{background:var(--azul);color:white}
+.comp-select{width:100%;padding:10px 14px;border:none;border-bottom:1px solid var(--borde);font-size:13px;font-family:inherit;color:var(--texto);background:white;outline:none;cursor:pointer}
+.comp-body{padding:16px}
+.comp-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--borde);font-size:12px}
+.comp-row:last-child{border-bottom:none}
+.comp-key{color:var(--texto3)}
+.comp-val{font-weight:600;color:var(--texto);font-family:"JetBrains Mono",monospace;font-size:11px}
+.comp-mid{width:1px;background:var(--borde)}
+
+/* ── CALC ── */
+.calc-card{background:white;border:1px solid var(--borde);border-radius:12px;padding:28px;box-shadow:var(--sombra)}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.calc-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--texto3);margin-bottom:7px;display:block}
+.calc-input,.calc-select{width:100%;background:var(--papel);border:1.5px solid var(--borde);border-radius:6px;color:var(--texto);font-family:inherit;font-size:14px;padding:10px 13px;outline:none;transition:border-color .2s;-webkit-appearance:none}
+.calc-input:focus,.calc-select:focus{border-color:var(--rojo);background:white}
+.calc-btn{width:100%;background:var(--rojo);color:white;border:none;border-radius:6px;font-family:inherit;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:13px;cursor:pointer;transition:all .2s}
+.calc-btn:hover{background:var(--rojo2);box-shadow:0 4px 14px rgba(139,46,46,.25)}
+.calc-result{margin-top:20px;border-top:1px solid var(--borde);padding-top:18px;display:none}
+.calc-result.show{display:block}
+.rrow{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--borde)}
+.rrow:last-child{border-bottom:none}
+.rkey{font-size:11px;color:var(--texto3)}
+.rval{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:500;color:var(--texto)}
+.rval.ok{color:var(--verde)}.rval.warn{color:#C0392B}
+.calc-nota{font-size:10px;color:var(--texto3);margin-top:12px;line-height:1.65;font-style:italic;padding-top:10px;border-top:1px solid var(--borde)}
+
+/* ── FOOTER ── */
+footer{background:var(--papel);border-top:1px solid var(--borde);padding:36px 28px 24px;text-align:center}
+.ft-logo{font-family:"Lora",serif;font-size:17px;font-weight:700;color:var(--rojo);margin-bottom:8px}
+.ft-logo span{font-style:italic;color:var(--texto)}
+.ft-note{font-size:11px;color:var(--texto3);max-width:480px;margin:0 auto 16px;line-height:1.6}
+.ft-copy{font-size:10px;color:var(--borde2)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){.wrap{grid-template-columns:1fr}.sidebar{display:none}}
+@media(max-width:600px){
+  nav{padding:0 16px}.nav-tabs,.nav-badge{display:none}.hamburger{display:flex}
+  .hero{padding:48px 16px 40px}.wrap{padding:0 16px}
+  .calc-grid,.comp-wrap{grid-template-columns:1fr}.comp-mid{display:none}
+  .cgrid{grid-template-columns:1fr}.glos-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
+<div class="rbar" id="rbar"></div>
 
-<div class="reading-bar" id="reading-bar"></div>
-
-<!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">The <span>Law Lover</span></a>
-  <ul class="nav-links">
-    <li><a href="#estructura">Estructura</a></li>
-    <li><a href="#penas">Penas</a></li>
-    <li><a href="#causales">Causales</a></li>
-    <li><a href="#imputacion">Imputacion</a></li>
+  <ul class="nav-tabs">
+    <li><a href="#ley599">Ley 599</a></li>
+    <li><a href="#ley906" class="azul">Ley 906</a></li>
+    <li><a href="#timeline" class="azul">Proceso</a></li>
+    <li><a href="#comparador">Delitos</a></li>
+    <li><a href="#glosario">Glosario</a></li>
     <li><a href="#prescripcion">Prescripcion</a></li>
   </ul>
-  <span class="nav-badge">Ley 599/2000</span>
-  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  <span class="nav-badge rojo">CO Penal</span>
+  <div class="hamburger" onclick="toggleMob()"><span></span><span></span><span></span></div>
 </nav>
 
-<div class="mobile-menu" id="mobile-menu">
-  <button class="mobile-close" onclick="toggleMenu()">&#10005;</button>
-  <a href="#estructura" onclick="toggleMenu()">Estructura del Delito</a>
-  <a href="#penas" onclick="toggleMenu()">Penas</a>
-  <a href="#causales" onclick="toggleMenu()">Causales</a>
-  <a href="#imputacion" onclick="toggleMenu()">Imputacion</a>
-  <a href="#prescripcion" onclick="toggleMenu()">Prescripcion</a>
+<div class="mob-menu" id="mob-menu">
+  <button class="mob-close" onclick="toggleMob()">&#10005;</button>
+  <a href="#ley599" onclick="toggleMob()">Ley 599 — Sustancial</a>
+  <a href="#ley906" onclick="toggleMob()">Ley 906 — Procesal</a>
+  <a href="#timeline" onclick="toggleMob()">Proceso Penal</a>
+  <a href="#comparador" onclick="toggleMob()">Comparador de Delitos</a>
+  <a href="#glosario" onclick="toggleMob()">Glosario</a>
+  <a href="#prescripcion" onclick="toggleMob()">Prescripcion</a>
 </div>
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-kicker">Derecho Penal Sustancial</div>
-    <h1 class="hero-title">Entiende el <em>Codigo Penal</em> colombiano</h1>
-    <p class="hero-sub">La Ley 599 de 2000 explicada de forma clara, interactiva y con ejemplos practicos. Para estudiantes, abogados y cualquier persona que quiera entender el derecho penal.</p>
+    <div class="hero-kicker">Derecho Penal Colombiano</div>
+    <h1 class="hero-h1">El codigo penal<br><em>explicado para todos</em></h1>
+    <p class="hero-sub">Dos leyes, un mismo sistema. Aprende como funciona el derecho penal colombiano con ejemplos reales, herramientas practicas y lenguaje claro.</p>
+    <div class="leyes-row">
+      <a href="#ley599" class="ley-pill rojo">
+        <div><div class="ley-num rojo">Ley 599</div><div class="ley-name">Codigo Penal</div><div class="ley-desc">Que es delito y que pena tiene</div></div>
+      </a>
+      <a href="#ley906" class="ley-pill azul">
+        <div><div class="ley-num azul">Ley 906</div><div class="ley-name">Codigo de Procedimiento</div><div class="ley-desc">Como se investiga y juzga</div></div>
+      </a>
+    </div>
     <div class="hero-chips">
       <a href="#estructura" class="chip">Estructura del delito</a>
-      <a href="#penas" class="chip">Clases de penas</a>
-      <a href="#causales" class="chip">Ausencia de responsabilidad</a>
-      <a href="#imputacion" class="chip">Imputacion objetiva</a>
+      <a href="#penas" class="chip">Penas</a>
+      <a href="#causales" class="chip">Causales de ausencia</a>
+      <a href="#proceso" class="chip azul">Proceso penal</a>
+      <a href="#audiencias" class="chip azul">Audiencias</a>
+      <a href="#medidas" class="chip azul">Medidas de aseguramiento</a>
+      <a href="#derechos" class="chip azul">Derechos del imputado</a>
+      <a href="#glosario" class="chip">Glosario</a>
       <a href="#prescripcion" class="chip">Prescripcion</a>
     </div>
-    <div class="hero-ley">&#128215; <strong>Ley 599 de 2000</strong> — Codigo Penal Colombiano &nbsp;|&nbsp; Actualizado 2026</div>
   </div>
 </div>
 
-<!-- CONTENIDO -->
-<div class="page-wrap">
-
+<!-- LAYOUT -->
+<div class="wrap">
   <!-- SIDEBAR -->
   <aside class="sidebar">
-    <div class="sidebar-title">Contenido</div>
-    <ul class="sidebar-nav" id="sidebar-nav">
-      <li><a href="#estructura">1. Estructura del Delito</a></li>
-      <li><a href="#tipicidad" class="sub">Tipicidad</a></li>
-      <li><a href="#antijuridicidad" class="sub">Antijuridicidad</a></li>
-      <li><a href="#culpabilidad" class="sub">Culpabilidad</a></li>
-      <div class="sidebar-sep"></div>
-      <li><a href="#penas">2. Penas</a></li>
-      <li><a href="#penas-principales" class="sub">Principales</a></li>
-      <li><a href="#penas-sustit" class="sub">Sustitutivas</a></li>
-      <li><a href="#penas-acces" class="sub">Accesorias</a></li>
-      <div class="sidebar-sep"></div>
-      <li><a href="#causales">3. Causales de Ausencia</a></li>
-      <div class="sidebar-sep"></div>
-      <li><a href="#imputacion">4. Imputacion Objetiva</a></li>
-      <div class="sidebar-sep"></div>
-      <li><a href="#prescripcion">5. Prescripcion</a></li>
+    <div class="sb-title">LEY 599 DE 2000</div>
+    <ul class="sb-nav">
+      <li><a href="#ley599">Codigo Penal <span class="sb-badge r">599</span></a></li>
+      <li><a href="#estructura" class="sub">Estructura del delito</a></li>
+      <li><a href="#penas" class="sub">Penas</a></li>
+      <li><a href="#causales" class="sub">Causales de ausencia</a></li>
+    </ul>
+    <div class="sb-sep"></div>
+    <div class="sb-title">LEY 906 DE 2004</div>
+    <ul class="sb-nav">
+      <li><a href="#ley906" class="azul">Cod. Procedimiento <span class="sb-badge a">906</span></a></li>
+      <li><a href="#proceso" class="sub azul">Proceso penal</a></li>
+      <li><a href="#audiencias" class="sub azul">Las audiencias</a></li>
+      <li><a href="#medidas" class="sub azul">Medidas aseguramiento</a></li>
+      <li><a href="#derechos" class="sub azul">Derechos del imputado</a></li>
+    </ul>
+    <div class="sb-sep"></div>
+    <div class="sb-title">HERRAMIENTAS</div>
+    <ul class="sb-nav">
+      <li><a href="#timeline">Linea de tiempo</a></li>
+      <li><a href="#comparador">Comparador delitos</a></li>
+      <li><a href="#glosario">Glosario penal</a></li>
+      <li><a href="#prescripcion">Calculadora</a></li>
     </ul>
   </aside>
 
-  <!-- MAIN -->
-  <main class="main-content">
+  <!-- MAIN CONTENT -->
+  <main class="main">
 
-    <!-- 1. ESTRUCTURA DEL DELITO -->
-    <section class="seccion" id="estructura">
-      <div class="seccion-header">
-        <div class="seccion-num">Art. 9 — Conducta punible</div>
-        <h2 class="seccion-titulo">Estructura del <em>Delito</em></h2>
-        <p class="seccion-intro">Para que una conducta sea delito en Colombia debe superar tres filtros en estricto orden logico. Si falla cualquiera, no hay delito. Este es el esquema tripartito del codigo penal colombiano.</p>
+    <!-- ══ LEY 599 ══ -->
+    <div class="ley-header rojo" id="ley599" style="scroll-margin-top:62px">
+      <div class="ley-header-num rojo">599</div>
+      <div class="ley-header-info">
+        <div class="ley-header-name">Ley 599 de 2000 — Codigo Penal</div>
+        <div class="ley-header-desc">Define que conductas son delito, sus penas y los elementos de la responsabilidad penal en Colombia.</div>
       </div>
+    </div>
 
-      <div class="concepto-grid">
-        <div class="concepto-card">
-          <div class="concepto-icon">&#128270;</div>
-          <div class="concepto-nombre">1. Tipicidad</div>
-          <div class="concepto-def">La conducta debe encajar exactamente en una descripcion legal previa. Sin ley previa no hay delito — principio de legalidad.</div>
-          <div class="concepto-art">Art. 10 C.P.</div>
-        </div>
-        <div class="concepto-card">
-          <div class="concepto-icon">&#9878;</div>
-          <div class="concepto-nombre">2. Antijuridicidad</div>
-          <div class="concepto-def">La conducta tipica debe lesionar o poner en peligro efectivo un bien juridicamente tutelado, sin una causal de justificacion.</div>
-          <div class="concepto-art">Art. 11 C.P.</div>
-        </div>
-        <div class="concepto-card">
-          <div class="concepto-icon">&#9878;&#65039;</div>
-          <div class="concepto-nombre">3. Culpabilidad</div>
-          <div class="concepto-def">El autor debe haber actuado con dolo, culpa o preterintencion. Nadie responde penalmente por un resultado que no pudo prever.</div>
-          <div class="concepto-art">Art. 12 C.P.</div>
-        </div>
+    <!-- ESTRUCTURA -->
+    <section class="sec" id="estructura">
+      <div class="sec-num">Art. 9 — Conducta punible</div>
+      <h2 class="sec-h">Estructura del <em>Delito</em></h2>
+      <p class="sec-intro">Para que exista delito deben concurrir tres elementos en orden logico. Si cualquiera falla, no hay delito y no puede haber condena.</p>
+      <div class="cgrid">
+        <div class="ccard"><div class="cicon">🔎</div><div class="cname">1. Tipicidad</div><div class="cdef">La conducta encaja exactamente en una descripcion legal previa. Sin ley previa no hay delito.</div><div class="cart">Art. 10 C.P.</div></div>
+        <div class="ccard"><div class="cicon">⚖️</div><div class="cname">2. Antijuridicidad</div><div class="cdef">La conducta tipica lesiona o pone en peligro real un bien juridico tutelado, sin justificacion.</div><div class="cart">Art. 11 C.P.</div></div>
+        <div class="ccard"><div class="cicon">🧠</div><div class="cname">3. Culpabilidad</div><div class="cdef">El autor actuo con dolo, culpa o preterintencion, siendo capaz de comprender la ilicitud.</div><div class="cart">Art. 12 C.P.</div></div>
       </div>
+      <div class="blq"><strong>Regla de oro:</strong> Se analizan en ese orden estricto. Si la conducta no es tipica, se detiene el analisis. Solo si supera los tres es un delito punible.</div>
 
-      <div class="bloque">
-        <strong>Regla de oro:</strong> Los tres elementos son acumulativos y se analizan en ese orden. Si la conducta no es tipica, no se analiza la antijuridicidad. Si es tipica pero no antijuridica, no se analiza la culpabilidad.
-      </div>
-
-      <!-- TIPICIDAD -->
-      <div id="tipicidad" style="scroll-margin-top:72px;margin-top:40px">
-        <div class="seccion-num" style="font-size:10px;margin-bottom:16px">Primer elemento — Art. 10</div>
-        <h3 style="font-family:'Lora',serif;font-size:22px;font-weight:700;margin-bottom:16px;color:var(--texto)">Tipicidad</h3>
-
-        <div class="accordion">
-          <div class="accordion-item">
-            <button class="accordion-btn" onclick="toggleAcc(this)">
-              <div><div class="accordion-label">Tipo objetivo</div><div class="accordion-sub">Los elementos externos y verificables de la conducta</div></div>
-              <div style="display:flex;align-items:center;gap:10px"><span class="accordion-art">Art. 10</span><span class="accordion-icon">+</span></div>
-            </button>
-            <div class="accordion-body">
-              <p style="font-size:14px;color:var(--texto2);line-height:1.7;margin-bottom:14px">El tipo objetivo comprende todos los elementos que pueden verificarse desde afuera: el sujeto activo, el sujeto pasivo, la conducta (accion u omision), el resultado y el nexo causal.</p>
-              <ul class="lista-concepto">
-                <li><strong>Sujeto activo:</strong> quien realiza la conducta. Puede ser cualquier persona o un sujeto cualificado (servidor publico, medico, etc.)</li>
-                <li><strong>Sujeto pasivo:</strong> el titular del bien juridico afectado</li>
-                <li><strong>Verbo rector:</strong> la accion descrita — matar, apoderarse, falsificar</li>
-                <li><strong>Resultado:</strong> en delitos de resultado, el efecto externo de la conducta</li>
-                <li><strong>Nexo causal:</strong> relacion entre la conducta y el resultado</li>
-              </ul>
-              <div class="ejemplo">
-                <div class="ejemplo-label"></div>
-                En el homicidio (Art. 103): sujeto activo = cualquier persona, verbo rector = "matar", sujeto pasivo = otro ser humano, resultado = la muerte, nexo causal = que la muerte sea consecuencia de la accion del sujeto activo.
-              </div>
-            </div>
+      <div class="acc" style="margin-top:20px">
+        <div class="acc-item">
+          <button class="acc-btn" onclick="A(this)"><div><div class="acc-label">Dolo — querer el resultado</div><div class="acc-sub">La forma mas grave de culpabilidad</div></div><div style="display:flex;align-items:center;gap:8px"><span class="acc-art">Art. 22</span><span class="acc-icon">+</span></div></button>
+          <div class="acc-body">
+            <div class="norma">Art. 22. La conducta es dolosa cuando el agente conoce los hechos constitutivos de la infraccion penal y quiere su realizacion. Tambien cuando la realizacion ha sido prevista como probable y su no produccion se deja librada al azar.</div>
+            <ul class="lista" style="margin-top:12px">
+              <li><strong>Dolo directo 1er grado:</strong> quiere el resultado como fin principal</li>
+              <li><strong>Dolo directo 2do grado:</strong> el resultado es consecuencia necesaria de su fin</li>
+              <li><strong>Dolo eventual:</strong> prevee el resultado como probable y lo acepta</li>
+            </ul>
+            <div class="ej"><div class="ej-lbl">Ejemplo practico</div>Juan dispara a Pedro para matarlo = dolo directo. Carlos pone una bomba en un avion para matar a X, sabiendo que moriran otros = dolo de 2do grado respecto a los demas.</div>
           </div>
-          <div class="accordion-item">
-            <button class="accordion-btn" onclick="toggleAcc(this)">
-              <div><div class="accordion-label">Tipo subjetivo — Dolo</div><div class="accordion-sub">Conocer y querer la realizacion de la conducta tipica</div></div>
-              <div style="display:flex;align-items:center;gap:10px"><span class="accordion-art">Art. 22</span><span class="accordion-icon">+</span></div>
-            </button>
-            <div class="accordion-body">
-              <div class="norma">Art. 22 — Dolo. La conducta es dolosa cuando el agente conoce los hechos constitutivos de la infraccion penal y quiere su realizacion. Tambien sera dolosa la conducta cuando la realizacion de la infraccion penal ha sido prevista como probable y su no produccion se deja librada al azar.</div>
-              <ul class="lista-concepto" style="margin-top:14px">
-                <li><strong>Dolo directo de primer grado:</strong> quiere el resultado como fin</li>
-                <li><strong>Dolo directo de segundo grado:</strong> el resultado es consecuencia necesaria del fin buscado</li>
-                <li><strong>Dolo eventual:</strong> representa el resultado como probable y lo acepta</li>
-              </ul>
-              <div class="ejemplo">
-                <div class="ejemplo-label"></div>
-                Juan dispara a Pedro para matarlo → dolo directo. Carlos pone una bomba en un avion para matar a X, sabiendo que moriran otros pasajeros → dolo de segundo grado respecto a los demas.
-              </div>
-            </div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-btn" onclick="A(this)"><div><div class="acc-label">Culpa — infraccion del deber de cuidado</div><div class="acc-sub">El resultado era previsible pero no querido</div></div><div style="display:flex;align-items:center;gap:8px"><span class="acc-art">Art. 23</span><span class="acc-icon">+</span></div></button>
+          <div class="acc-body">
+            <div class="norma">Art. 23. La conducta es culposa cuando el resultado tipico es producto de la infraccion al deber objetivo de cuidado y el agente debio haberlo previsto por ser previsible, o habiendolo previsto, confio en poder evitarlo.</div>
+            <ul class="lista" style="margin-top:12px">
+              <li><strong>Culpa consciente:</strong> previo el resultado pero confio en evitarlo</li>
+              <li><strong>Culpa inconsciente:</strong> no previo el resultado pero debio haberlo previsto</li>
+            </ul>
+            <div class="blq amarillo" style="margin-top:10px"><strong>Importante:</strong> La culpa solo se sanciona cuando el legislador lo previo expresamente en el tipo penal (Art. 21).</div>
           </div>
-          <div class="accordion-item">
-            <button class="accordion-btn" onclick="toggleAcc(this)">
-              <div><div class="accordion-label">Tipo subjetivo — Culpa</div><div class="accordion-sub">Infraccion del deber objetivo de cuidado</div></div>
-              <div style="display:flex;align-items:center;gap:10px"><span class="accordion-art">Art. 23</span><span class="accordion-icon">+</span></div>
-            </button>
-            <div class="accordion-body">
-              <div class="norma">Art. 23 — Culpa. La conducta es culposa cuando el resultado tipico es producto de la infraccion al deber objetivo de cuidado y el agente debio haberlo previsto por ser previsible, o habiendolo previsto, confio en poder evitarlo.</div>
-              <ul class="lista-concepto" style="margin-top:14px">
-                <li><strong>Culpa consciente (con representacion):</strong> previo el resultado pero confio en evitarlo</li>
-                <li><strong>Culpa inconsciente (sin representacion):</strong> no previo el resultado pero debio haberlo previsto</li>
-              </ul>
-              <div class="bloque amarillo" style="margin-top:12px"><strong>Importante:</strong> La culpa solo se sanciona cuando el legislador expresamente lo ha previsto en el tipo penal (Art. 21 inc. 2 C.P.).</div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <button class="accordion-btn" onclick="toggleAcc(this)">
-              <div><div class="accordion-label">Preterintencion</div><div class="accordion-sub">El resultado supera la intencion del autor</div></div>
-              <div style="display:flex;align-items:center;gap:10px"><span class="accordion-art">Art. 24</span><span class="accordion-icon">+</span></div>
-            </button>
-            <div class="accordion-body">
-              <div class="norma">Art. 24 — Preterintencion. La conducta es preterintencional cuando su resultado, siendo previsible, supera la intencion del agente.</div>
-              <div class="ejemplo" style="margin-top:12px">
-                <div class="ejemplo-label"></div>
-                Pedro quiere lesionar a Juan (dolo de lesiones) pero este muere a causa del golpe (resultado de homicidio). El resultado muerte supera la intencion de lesionar — hay preterintencion. Aplica el Art. 105 C.P. (homicidio preterintencional).
-              </div>
-            </div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-btn" onclick="A(this)"><div><div class="acc-label">Preterintencion — resultado que supera la intencion</div><div class="acc-sub">Quiso menos, causo mas</div></div><div style="display:flex;align-items:center;gap:8px"><span class="acc-art">Art. 24</span><span class="acc-icon">+</span></div></button>
+          <div class="acc-body">
+            <div class="norma">Art. 24. La conducta es preterintencional cuando su resultado, siendo previsible, supera la intencion del agente.</div>
+            <div class="ej" style="margin-top:10px"><div class="ej-lbl">Ejemplo practico</div>Pedro quiere lesionar a Juan pero este muere del golpe. Quiso lesionar (dolo), causo muerte (resultado mayor). Se aplica homicidio preterintencional Art. 105 C.P.</div>
           </div>
         </div>
       </div>
 
-      <!-- ANTIJURIDICIDAD -->
-      <div id="antijuridicidad" style="scroll-margin-top:72px;margin-top:48px">
-        <div class="seccion-num" style="font-size:10px;margin-bottom:16px">Segundo elemento — Art. 11</div>
-        <h3 style="font-family:'Lora',serif;font-size:22px;font-weight:700;margin-bottom:16px;color:var(--texto)">Antijuridicidad</h3>
-        <p style="font-size:14px;color:var(--texto2);line-height:1.75;margin-bottom:20px">Una conducta tipica es antijuridica cuando lesiona o pone en peligro efectivo un bien juridicamente tutelado. El Art. 11 C.P. consagra el principio de lesividad como exigencia de antijuridicidad material.</p>
-        <div class="concepto-grid" style="grid-template-columns:1fr 1fr">
-          <div class="concepto-card">
-            <div class="concepto-icon">&#128308;</div>
-            <div class="concepto-nombre">Antijuridicidad formal</div>
-            <div class="concepto-def">La conducta contradice el ordenamiento juridico — esta prohibida por la ley penal sin que concurra una causal de justificacion.</div>
-          </div>
-          <div class="concepto-card">
-            <div class="concepto-icon">&#128993;</div>
-            <div class="concepto-nombre">Antijuridicidad material</div>
-            <div class="concepto-def">La conducta efectivamente lesiona o pone en peligro un bien juridico. Si la lesion es insignificante puede aplicar el principio de insignificancia.</div>
-          </div>
+      <div class="quiz" id="q1">
+        <div class="quiz-q">🧐 Un medico opera correctamente segun todos los protocolos, pero el paciente muere por una complicacion imprevisible. Que elemento de la estructura del delito faltaria?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" onclick="QR('q1',this,'mal')"><span class="quiz-letra">A</span>Tipicidad — la muerte no encaja en homicidio</button>
+          <button class="quiz-opt" onclick="QR('q1',this,'mal')"><span class="quiz-letra">B</span>Antijuridicidad — hay estado de necesidad</button>
+          <button class="quiz-opt" onclick="QR('q1',this,'ok')"><span class="quiz-letra">C</span>Culpabilidad — no hubo dolo ni culpa (caso fortuito)</button>
+          <button class="quiz-opt" onclick="QR('q1',this,'mal')"><span class="quiz-letra">D</span>Nada — el medico responde penalmente</button>
         </div>
-        <div class="bloque verde" style="margin-top:8px"><strong>Causales de justificacion (Art. 32 nums. 1-7):</strong> Ley o acto legitimo de autoridad — Legitima defensa — Estado de necesidad justificante — Consentimiento del titular del bien juridico. Si concurre alguna, la conducta tipica NO es antijuridica.</div>
-      </div>
-
-      <!-- CULPABILIDAD -->
-      <div id="culpabilidad" style="scroll-margin-top:72px;margin-top:48px">
-        <div class="seccion-num" style="font-size:10px;margin-bottom:16px">Tercer elemento — Art. 12</div>
-        <h3 style="font-family:'Lora',serif;font-size:22px;font-weight:700;margin-bottom:16px;color:var(--texto)">Culpabilidad</h3>
-        <p style="font-size:14px;color:var(--texto2);line-height:1.75;margin-bottom:20px">Juicio de reproche personal. Solo se puede reprochar penalmente a quien, pudiendo actuar conforme al derecho, eligio no hacerlo. Se exige: imputabilidad, conocimiento de la ilicitud y exigibilidad de otra conducta.</p>
-        <ul class="lista-concepto">
-          <li><strong>Imputabilidad:</strong> capacidad de comprender la ilicitud y determinarse segun esa comprension (Art. 33)</li>
-          <li><strong>Conocimiento de la ilicitud:</strong> el autor sabia o podia saber que su conducta era contraria a derecho — error de prohibicion (Art. 32 num. 11)</li>
-          <li><strong>Exigibilidad:</strong> era razonablemente exigible al autor actuar de otro modo — inexigibilidad en circunstancias extremas</li>
-        </ul>
-
-        <!-- QUIZ -->
-        <div class="quiz-wrap" style="margin-top:24px" id="quiz1">
-          <div class="quiz-preg">&#129488; Pedro golpea a un ladron que le esta robando con violencia. La conducta de Pedro es tipica de lesiones personales. Segun la estructura del delito, cual elemento faltaria?</div>
-          <div class="quiz-opciones">
-            <button class="quiz-opt" onclick="responder('quiz1',this,'mal')"><span class="quiz-opt-letra">A</span> Tipicidad — no encaja en ningun tipo penal</button>
-            <button class="quiz-opt" onclick="responder('quiz1',this,'ok')"><span class="quiz-opt-letra">B</span> Antijuridicidad — hay legitima defensa (Art. 32 num. 6)</button>
-            <button class="quiz-opt" onclick="responder('quiz1',this,'mal')"><span class="quiz-opt-letra">C</span> Culpabilidad — Pedro no era imputable</button>
-            <button class="quiz-opt" onclick="responder('quiz1',this,'mal')"><span class="quiz-opt-letra">D</span> Ninguno, Pedro responde penalmente</button>
-          </div>
-          <div class="quiz-feedback ok" id="quiz1-ok">&#10003; Correcto. La conducta ES tipica (lesiones) pero NO es antijuridica porque opera la legitima defensa del Art. 32 num. 6: repeler una agresion actual o inminente, injusta, con una defensa proporcionada.</div>
-          <div class="quiz-feedback mal" id="quiz1-mal">&#10005; Incorrecto. La conducta SI encaja en el tipo de lesiones personales, y Pedro SI era imputable. Lo que falta es la antijuridicidad — la legitima defensa del Art. 32 num. 6 la elimina.</div>
-          <button class="quiz-btn" onclick="resetQuiz('quiz1')">Intentar de nuevo</button>
-        </div>
+        <div class="quiz-fb ok" id="q1-ok" style="display:none">✓ Correcto. No hubo infraccion al deber de cuidado — actuo conforme a la lex artis. Falta la culpabilidad: no hay dolo ni culpa. Es un caso fortuito (Art. 32 num. 1).</div>
+        <div class="quiz-fb mal" id="q1-mal" style="display:none">✗ Incorrecto. La conducta SI encaja en un tipo (muerte de otra persona). No hay estado de necesidad tampoco. Lo que falta es la culpabilidad — no hubo dolo ni culpa porque la complicacion era imprevisible.</div>
+        <button class="quiz-reset" onclick="QReset('q1')">Intentar de nuevo</button>
       </div>
     </section>
 
-    <!-- 2. PENAS -->
-    <section class="seccion" id="penas">
-      <div class="seccion-header">
-        <div class="seccion-num">Arts. 34 al 52 — Penas</div>
-        <h2 class="seccion-titulo">Clases de <em>Penas</em></h2>
-        <p class="seccion-intro">El Codigo Penal establece tres categorias de penas segun su naturaleza y funcion. Solo las principales pueden aplicarse de forma autonoma.</p>
+    <!-- PENAS -->
+    <section class="sec" id="penas">
+      <div class="sec-num">Arts. 34–52</div>
+      <h2 class="sec-h">Clases de <em>Penas</em></h2>
+      <p class="sec-intro">El codigo establece tres categorias de penas. Solo las principales son autonomas — las demas dependen de ellas.</p>
+      <div class="twrap">
+        <table class="tabla">
+          <thead><tr><th>Categoria</th><th>Pena</th><th>Caracteristica clave</th><th>Articulo</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tag r">PRINCIPAL</span></td><td>Prision</td><td>16 meses a 60 anos. Base del sistema punitivo.</td><td>Art. 35</td></tr>
+            <tr><td><span class="tag r">PRINCIPAL</span></td><td>Multa</td><td>En SMLMV. De 1 a 50.000 segun el delito.</td><td>Art. 35</td></tr>
+            <tr><td><span class="tag r">PRINCIPAL</span></td><td>Prision perpetua revisable</td><td>Para delitos graves contra menores. Revisable a 25 anos. (A.L. 01/2020)</td><td>Art. 35</td></tr>
+            <tr><td><span class="tag a">SUSTITUTIVA</span></td><td>Prision domiciliaria</td><td>Sustituye carcel si pena ≤ 8 anos y no hay prohibicion del Art. 68A.</td><td>Art. 36</td></tr>
+            <tr><td><span class="tag a">SUSTITUTIVA</span></td><td>Arresto fin de semana</td><td>Sustituye multa incumplida — 3 dias por SMLMV.</td><td>Art. 36</td></tr>
+            <tr><td><span class="tag y">ACCESORIA</span></td><td>Inhabilitacion funciones publicas</td><td>Acompana la pena principal en delitos de servidores.</td><td>Art. 43</td></tr>
+            <tr><td><span class="tag y">ACCESORIA</span></td><td>Expulsion del territorio</td><td>Para extranjeros. Se ejecuta al terminar la pena principal.</td><td>Art. 43</td></tr>
+          </tbody>
+        </table>
       </div>
-
-      <div id="penas-principales" style="scroll-margin-top:72px">
-        <h3 style="font-family:'Lora',serif;font-size:20px;font-weight:700;margin-bottom:16px;color:var(--texto)">Penas Principales <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--acento)">Art. 35</span></h3>
-        <div class="tabla-wrap">
-          <table class="tabla">
-            <thead><tr><th>Pena</th><th>Descripcion</th><th>Aplicacion</th></tr></thead>
-            <tbody>
-              <tr><td>Prision</td><td>Privacion de la libertad en establecimiento carcelario. Minimo 16 meses, maximo 60 anos (antes de acumulacion).</td><td><span class="tag-pena principal">PRINCIPAL</span></td></tr>
-              <tr><td>Multa</td><td>Obligacion de pagar al Estado una suma de dinero fijada en salarios minimos mensuales vigentes (SMLMV). Art. 39.</td><td><span class="tag-pena principal">PRINCIPAL</span></td></tr>
-              <tr><td>Prision perpetua revisable</td><td>Incorporada por Acto Legislativo 01 de 2020 para delitos graves contra menores. Revisable a los 25 anos.</td><td><span class="tag-pena principal">PRINCIPAL</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div id="penas-sustit" style="scroll-margin-top:72px;margin-top:32px">
-        <h3 style="font-family:'Lora',serif;font-size:20px;font-weight:700;margin-bottom:16px;color:var(--texto)">Penas Sustitutivas <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--acento)">Art. 36</span></h3>
-        <div class="bloque azul"><strong>Concepto clave:</strong> Las penas sustitutivas reemplazan a las principales cuando se cumplen ciertos requisitos. No son autonomas — solo existen en relacion con una pena principal.</div>
-        <div class="tabla-wrap" style="margin-top:16px">
-          <table class="tabla">
-            <thead><tr><th>Pena sustitutiva</th><th>Sustituye a</th><th>Condicion principal</th></tr></thead>
-            <tbody>
-              <tr><td>Prision domiciliaria</td><td>Prision intramural</td><td>Pena no superior a 8 anos, sin delitos del Art. 68A</td></tr>
-              <tr><td>Arresto de fin de semana</td><td>Multa</td><td>Incumplimiento de la multa — 3 dias por cada SMLMV</td></tr>
-              <tr><td>Arresto progresivo</td><td>Multa</td><td>Alternativa cuando hay insolvencia</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div id="penas-acces" style="scroll-margin-top:72px;margin-top:32px">
-        <h3 style="font-family:"Lora",serif;font-size:20px;font-weight:700;margin-bottom:16px;color:var(--texto)">Penas Accesorias <span style="font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--acento)">Arts. 43-52</span></h3>
-        <ul class="lista-concepto">
-          <li>Inhabilitacion para el ejercicio de derechos y funciones publicas</li>
-          <li>Perdida del empleo o cargo publico</li>
-          <li>Inhabilitacion para el ejercicio de profesion, arte, oficio, industria o comercio</li>
-          <li>Inhabilitacion para el ejercicio de la patria potestad, tutela y curatela</li>
-          <li>Privacion del derecho a conducir vehiculos automotores</li>
-          <li>Privacion del derecho a la tenencia y porte de armas</li>
-          <li>Privacion del derecho a residir en determinados lugares</li>
-          <li>Prohibicion de consumir bebidas alcoholicas u otras sustancias</li>
-          <li>Expulsion del territorio nacional para extranjeros</li>
-        </ul>
-      </div>
+      <div class="blq azul"><strong>Art. 68A — Exclusiones:</strong> Ciertos delitos tienen prohibicion expresa de subrogados penales: terrorismo, narcotrafico, secuestro extorsivo, homicidio de servidor publico, entre otros. Ni domiciliaria ni suspension condicional.</div>
     </section>
 
-    <!-- 3. CAUSALES AUSENCIA DE RESPONSABILIDAD -->
-    <section class="seccion" id="causales">
-      <div class="seccion-header">
-        <div class="seccion-num">Art. 32 — Ausencia de responsabilidad</div>
-        <h2 class="seccion-titulo">Causales de <em>Ausencia de Responsabilidad</em></h2>
-        <p class="seccion-intro">El Art. 32 del Codigo Penal consagra 13 causales que eliminan la responsabilidad penal. Unas actuan sobre la tipicidad, otras sobre la antijuridicidad y otras sobre la culpabilidad.</p>
-      </div>
-
-      <div class="accordion">
-        <div class="accordion-item">
-          <button class="accordion-btn" onclick="toggleAcc(this)">
-            <div><div class="accordion-label">Num. 1 — Caso fortuito o fuerza mayor</div><div class="accordion-sub">Elimina la tipicidad subjetiva</div></div>
-            <div style="display:flex;align-items:center;gap:10px"><span class="accordion-art">Art. 32-1</span><span class="accordion-icon">+</span></div>
-          </button>
-          <div class="accordion-body">
-            <p style="font-size:14px;color:var(--texto2);line-height:1.7;margin-bottom:12px">Se presenta cuando la conducta se realiza por una fuerza irresistible o caso fortuito, es decir, por un evento imprevisible e inevitable.</p>
-            <div class="ejemplo"><div class="ejemplo-label"></div>Un conductor sufre un ataque cardiaco mientras maneja y atropella a un peaton. No hay tipicidad subjetiva — no hubo dolo ni culpa.</div>
-          </div>
+    <!-- CAUSALES -->
+    <section class="sec" id="causales">
+      <div class="sec-num">Art. 32 — 13 causales</div>
+      <h2 class="sec-h">Causales de <em>Ausencia de Responsabilidad</em></h2>
+      <p class="sec-intro">Cuando concurre alguna de estas causales, la responsabilidad penal desaparece total o parcialmente. Cada una actua en un elemento distinto de la estructura del delito.</p>
+      <div class="acc">
+        <div class="acc-item">
+          <button class="acc-btn" onclick="A(this)"><div><div class="acc-label">Num. 1 — Caso fortuito o fuerza mayor</div><div class="acc-sub">Elimina la tipicidad subjetiva</div></div><div style="display:flex;align-items:center;gap:8px"><span class="acc-art">Art. 32-1</span><span class="acc-icon">+</span></div></button>
+          <div class="acc-body"><p style="margin-bottom:10px">Evento imprevisible e irresistible que hace imposible actuar de otra forma.</p><div class="ej"><div class="ej-lbl">Ejemplo practico</div>Conductor sufre infarto al volante y atropella a alguien. No hay dolo ni culpa — el evento era imprevisible.</div></div>
         </div>
-        <div class="accordion-item">
-          <button class="accordion-btn" onclick="toggleAcc(this)">
-            <div><div class="accordion-label">Num. 2 — Inimputabilidad</div><div class="accordion-sub">Elimina la culpabilidad</div></div>
-            <div style="display:flex;align-items:center;gap:10px"><span class="accordion-art">Art. 32-2</span><span class="accordion-icon">+</span></div>
-          </button>
-          <div class="accordion-body">
-            <p style="font-size:14px;color:var(--texto2);line-height:1.7;margin-bottom:12px">El agente no podia comprender la ilicitud de su conducta o determinarse de acuerdo con esa comprension por inmadurez sicologica, trastorno mental, diversidad sociocultural o estados similares.</p>
-            <div class="bloque amarillo"><strong>Atencion:</strong> El inimputable no es absuelto — se le impone una medida de seguridad (internacion o libertad vigilada) en lugar de pena.</div>
-          </div>
+        <div class="acc-item">
+          <button class="acc-btn" onclick="A(this)"><div><div class="acc-label">Num. 2 — Inimputabilidad</div><div class="acc-sub">Elimina la culpabilidad</div></div><div style="display:flex;align-items:center;gap:8px"><span class="acc-art">Art. 32-2</span><span class="acc-icon">+</span></div></button>
+          <div class="acc-body"><p style="margin-bottom:10px">El agente no podia comprender la ilicitud por trastorno mental, inmadurez psicologica o diversidad sociocultural.</p><div class="blq amarillo"><strong>Atencion:</strong> El inimputable no es absuelto — recibe medida de seguridad (internacion o libertad vigilada) en lugar de pena.</div></div>
         </div>
-        <div class="accordion-item">
-          <button class="accordion-btn" onclick="toggleAcc(this)">
-            <div><div class="accordion-label">Num. 5 — Estado de necesidad justificante</div><div class="accordion-sub">Elimina la antijuridicidad</div></div>
-            <div style="display:flex;align-items:center;gap:10px"><span class="accordion-art">Art. 32-5</span><span class="accordion-icon">+</span></div>
-          </button>
-          <div class="accordion-body">
-            <p style="font-size:14px;color:var(--texto2);line-height:1.7;margin-bottom:12px">Actua para proteger un derecho propio o ajeno de un peligro actual o inminente, inevitable de otra manera, no causado intencionalmente, y siempre que el sacrificio sea menor al beneficio.</p>
-            <div class="ejemplo"><div class="ejemplo-label"></div>Una persona destruye la puerta de un vecino para rescatar a un nino que se esta ahogando. Hay dano en bien ajeno (tipico) pero opera el estado de necesidad — el bien salvado (vida) supera al bien sacrificado (propiedad).</div>
-          </div>
+        <div class="acc-item">
+          <button class="acc-btn" onclick="A(this)"><div><div class="acc-label">Num. 5 — Estado de necesidad justificante</div><div class="acc-sub">Elimina la antijuridicidad</div></div><div style="display:flex;align-items:center;gap:8px"><span class="acc-art">Art. 32-5</span><span class="acc-icon">+</span></div></button>
+          <div class="acc-body"><p style="margin-bottom:10px">Se actua para proteger un bien propio o ajeno de un peligro actual, inevitable de otra forma, y el bien sacrificado es menor al protegido.</p><div class="ej"><div class="ej-lbl">Ejemplo practico</div>Destruir la puerta de un vecino para salvar a un nino que se ahoga. El bien protegido (vida) supera al sacrificado (propiedad).</div></div>
         </div>
-        <div class="accordion-item">
-          <button class="accordion-btn" onclick="toggleAcc(this)">
-            <div><div class="accordion-label">Num. 6 — Legitima defensa</div><div class="accordion-sub">Elimina la antijuridicidad</div></div>
-            <div style="display:flex;align-items:center;gap:10px"><span class="accordion-art">Art. 32-6</span><span class="accordion-icon">+</span></div>
-          </button>
-          <div class="accordion-body">
+        <div class="acc-item">
+          <button class="acc-btn" onclick="A(this)"><div><div class="acc-label">Num. 6 — Legitima defensa</div><div class="acc-sub">Elimina la antijuridicidad</div></div><div style="display:flex;align-items:center;gap:8px"><span class="acc-art">Art. 32-6</span><span class="acc-icon">+</span></div></button>
+          <div class="acc-body">
             <div class="norma">Se obre por la necesidad de defender un derecho propio o ajeno contra injusta agresion actual o inminente, siempre que la defensa sea proporcionada a la agresion.</div>
-            <h4 style="font-size:14px;font-weight:600;color:var(--texto);margin:14px 0 10px">Requisitos:</h4>
-            <ul class="lista-concepto">
-              <li><strong>Agresion:</strong> debe ser injusta (no provocada por quien se defiende)</li>
-              <li><strong>Actualidad o inminencia:</strong> presente o a punto de ocurrir — no caben venganzas</li>
-              <li><strong>Necesidad:</strong> no habia otra forma de evitar el dano</li>
+            <ul class="lista" style="margin-top:10px">
+              <li><strong>Agresion injusta:</strong> no provocada por quien se defiende</li>
+              <li><strong>Actual o inminente:</strong> presente o a punto de ocurrir — no venganzas</li>
               <li><strong>Proporcionalidad:</strong> la defensa debe ser adecuada a la agresion</li>
             </ul>
-            <div class="bloque"><strong>Exceso en la legitima defensa (Art. 32-6 inc. 2):</strong> Si la defensa es desproporcionada, puede atenuar la pena pero no elimina la responsabilidad completamente.</div>
           </div>
         </div>
-        <div class="accordion-item">
-          <button class="accordion-btn" onclick="toggleAcc(this)">
-            <div><div class="accordion-label">Num. 10 — Insuperable coercion ajena</div><div class="accordion-sub">Elimina la culpabilidad — inexigibilidad</div></div>
-            <div style="display:flex;align-items:center;gap:10px"><span class="accordion-art">Art. 32-10</span><span class="accordion-icon">+</span></div>
-          </button>
-          <div class="accordion-body">
-            <p style="font-size:14px;color:var(--texto2);line-height:1.7;margin-bottom:12px">Cuando el agente actua constreñido por miedo insuperable — una amenaza grave, actual o inminente que le impide actuar libremente.</p>
-            <div class="ejemplo"><div class="ejemplo-label"></div>Los paramilitares amenazan a un campesino de muerte si no transporta un cargamento de droga. Si la amenaza era real, actual y grave, puede operar el miedo insuperable.</div>
-            <div class="bloque amarillo" style="margin-top:12px"><strong>Limite:</strong> No aplica si el agente se puso voluntariamente en la situacion de peligro o si podia razonablemente resistir la coercion.</div>
-          </div>
+        <div class="acc-item">
+          <button class="acc-btn" onclick="A(this)"><div><div class="acc-label">Num. 10 — Insuperable coercion ajena</div><div class="acc-sub">Elimina la culpabilidad — inexigibilidad</div></div><div style="display:flex;align-items:center;gap:8px"><span class="acc-art">Art. 32-10</span><span class="acc-icon">+</span></div></button>
+          <div class="acc-body"><p style="margin-bottom:10px">Amenaza grave, actual o inminente que hace imposible resistir y actuar de otra forma.</p><div class="ej"><div class="ej-lbl">Ejemplo practico</div>Campesino obligado a transportar droga bajo amenaza de muerte inmediata a su familia. Si la amenaza era real e irresistible, opera esta causal.</div></div>
         </div>
-        <div class="accordion-item">
-          <button class="accordion-btn" onclick="toggleAcc(this)">
-            <div><div class="accordion-label">Num. 11 — Error de prohibicion</div><div class="accordion-sub">Elimina o atenua la culpabilidad</div></div>
-            <div style="display:flex;align-items:center;gap:10px"><span class="accordion-art">Art. 32-11</span><span class="accordion-icon">+</span></div>
-          </button>
-          <div class="accordion-body">
-            <p style="font-size:14px;color:var(--texto2);line-height:1.7;margin-bottom:12px">El agente actua creyendo errada pero sinceramente que su conducta estaba permitida por el ordenamiento juridico.</p>
-            <ul class="lista-concepto">
-              <li><strong>Error invencible:</strong> ni con el cuidado debido hubiera podido evitar el error — excluye la culpabilidad</li>
-              <li><strong>Error vencible:</strong> con diligencia hubiera podido salir del error — atenua la pena en la mitad</li>
+        <div class="acc-item">
+          <button class="acc-btn" onclick="A(this)"><div><div class="acc-label">Num. 11 — Error de prohibicion</div><div class="acc-sub">Elimina o atenua la culpabilidad</div></div><div style="display:flex;align-items:center;gap:8px"><span class="acc-art">Art. 32-11</span><span class="acc-icon">+</span></div></button>
+          <div class="acc-body">
+            <ul class="lista">
+              <li><strong>Error invencible:</strong> ni con el maximo cuidado hubiera podido evitar el error → excluye la culpabilidad</li>
+              <li><strong>Error vencible:</strong> con diligencia hubiera salido del error → atenua la pena a la mitad</li>
             </ul>
-            <div class="ejemplo" style="margin-top:12px"><div class="ejemplo-label"></div>Un extranjero recien llegado porta una sustancia legal en su pais, ignorando que en Colombia es ilegal. Si el error era razonablemente inevitable, puede operar el error de prohibicion invencible.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- QUIZ 2 -->
-      <div class="quiz-wrap" style="margin-top:24px" id="quiz2">
-        <div class="quiz-preg">&#129488; Maria actua bajo una amenaza de muerte inmediata y comete una conducta tipica. Esta causal actua sobre:</div>
-        <div class="quiz-opciones">
-          <button class="quiz-opt" onclick="responder('quiz2',this,'mal')"><span class="quiz-opt-letra">A</span> La tipicidad — la conducta no encaja en el tipo penal</button>
-          <button class="quiz-opt" onclick="responder('quiz2',this,'mal')"><span class="quiz-opt-letra">B</span> La antijuridicidad — hay una causal de justificacion</button>
-          <button class="quiz-opt" onclick="responder('quiz2',this,'ok')"><span class="quiz-opt-letra">C</span> La culpabilidad — no era exigible otra conducta (miedo insuperable)</button>
-          <button class="quiz-opt" onclick="responder('quiz2',this,'mal')"><span class="quiz-opt-letra">D</span> No opera ninguna causal — hay plena responsabilidad</button>
-        </div>
-        <div class="quiz-feedback ok" id="quiz2-ok">&#10003; Correcto. El miedo insuperable (Art. 32 num. 10) es una causal de inexigibilidad que actua sobre la culpabilidad. La conducta ES tipica y antijuridica, pero no hay culpabilidad porque no era exigible resistir la amenaza.</div>
-        <div class="quiz-feedback mal" id="quiz2-mal">&#10005; Incorrecto. La conducta sigue siendo tipica y antijuridica. Lo que el miedo insuperable elimina es la culpabilidad — especificamente el elemento de exigibilidad de otra conducta.</div>
-        <button class="quiz-btn" onclick="resetQuiz('quiz2')">Intentar de nuevo</button>
-      </div>
-    </section>
-
-    <!-- 4. IMPUTACION OBJETIVA -->
-    <section class="seccion" id="imputacion">
-      <div class="seccion-header">
-        <div class="seccion-num">Teoria — Tipicidad objetiva</div>
-        <h2 class="seccion-titulo">Imputacion <em>Objetiva</em></h2>
-        <p class="seccion-intro">La teoria de la imputacion objetiva complementa la causalidad — no basta que una conducta haya causado un resultado, sino que ese resultado debe poderse imputar juridicamente al autor.</p>
-      </div>
-
-      <div class="concepto-grid">
-        <div class="concepto-card">
-          <div class="concepto-icon">&#128200;</div>
-          <div class="concepto-nombre">Creacion de riesgo</div>
-          <div class="concepto-def">El autor debe haber creado un riesgo juridicamente desaprobado. Las conductas dentro del riesgo permitido no generan imputacion.</div>
-        </div>
-        <div class="concepto-card">
-          <div class="concepto-icon">&#128279;</div>
-          <div class="concepto-nombre">Realizacion del riesgo</div>
-          <div class="concepto-def">El resultado debe ser la realizacion concreta del riesgo creado, no de otro riesgo independiente o del azar.</div>
-        </div>
-        <div class="concepto-card">
-          <div class="concepto-icon">&#127919;</div>
-          <div class="concepto-nombre">Fin de proteccion</div>
-          <div class="concepto-def">El resultado debe estar dentro del ambito de proteccion de la norma que tipifica la conducta.</div>
-        </div>
-      </div>
-
-      <div class="accordion" style="margin-top:8px">
-        <div class="accordion-item">
-          <button class="accordion-btn" onclick="toggleAcc(this)">
-            <div><div class="accordion-label">Riesgo permitido</div><div class="accordion-sub">Exclusion de imputacion objetiva</div></div>
-            <span class="accordion-icon">+</span>
-          </button>
-          <div class="accordion-body">
-            <p style="font-size:14px;color:var(--texto2);line-height:1.7;margin-bottom:12px">Ciertas actividades generan riesgo pero estan socialmente permitidas. Quien actua dentro de ese riesgo no responde penalmente aunque cause un resultado tipico.</p>
-            <div class="ejemplo"><div class="ejemplo-label"></div>Un cirujano que realiza una operacion conforme a la lex artis y el paciente muere — no hay imputacion objetiva aunque el riesgo de muerte existia. La cirugia es una actividad dentro del riesgo permitido.</div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <button class="accordion-btn" onclick="toggleAcc(this)">
-            <div><div class="accordion-label">Principio de confianza</div><div class="accordion-sub">Distribucion del riesgo en actividades compartidas</div></div>
-            <span class="accordion-icon">+</span>
-          </button>
-          <div class="accordion-body">
-            <p style="font-size:14px;color:var(--texto2);line-height:1.7;margin-bottom:12px">Quien participa en una actividad compartida puede confiar en que los demas cumpliran sus roles — no responde por las infracciones de otros.</p>
-            <div class="ejemplo"><div class="ejemplo-label"></div>Un conductor que avanza en verde no responde por el accidente causado por otro conductor que se pasa el rojo, aunque hubiera podido frenarse a tiempo.</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 5. PRESCRIPCION -->
-    <section class="seccion" id="prescripcion">
-      <div class="seccion-header">
-        <div class="seccion-num">Art. 83 al 86 — Prescripcion</div>
-        <h2 class="seccion-titulo">Prescripcion de la <em>Accion Penal</em></h2>
-        <p class="seccion-intro">La prescripcion extingue la accion penal por el paso del tiempo sin que el Estado ejerza su poder punitivo. Es un limite temporal al ius puniendi.</p>
+    <!-- ══ LEY 906 ══ -->
+    <div class="ley-header azul" id="ley906" style="scroll-margin-top:62px;margin-top:20px">
+      <div class="ley-header-num azul">906</div>
+      <div class="ley-header-info">
+        <div class="ley-header-name">Ley 906 de 2004 — Codigo de Procedimiento Penal</div>
+        <div class="ley-header-desc">Sistema acusatorio colombiano: como se investiga, acusa y juzga un delito. Regula las audiencias, derechos y medidas del proceso.</div>
       </div>
+    </div>
 
-      <div class="concepto-grid" style="grid-template-columns:1fr 1fr;margin-bottom:24px">
-        <div class="concepto-card">
-          <div class="concepto-icon">&#128336;</div>
-          <div class="concepto-nombre">Regla general</div>
-          <div class="concepto-def">Igual a la pena maxima del delito. Minimo 5 anos, maximo 20 anos (Art. 83 inc. 1).</div>
-          <div class="concepto-art">Art. 83 C.P.</div>
-        </div>
-        <div class="concepto-card">
-          <div class="concepto-icon">&#128198;</div>
-          <div class="concepto-nombre">Servidor publico</div>
-          <div class="concepto-def">El termino aumenta en una tercera parte cuando el sujeto activo es servidor publico y la conducta se cometio en ejercicio del cargo (Art. 83 inc. 2).</div>
-          <div class="concepto-art">Art. 83 inc. 2</div>
-        </div>
+    <!-- PROCESO PENAL -->
+    <section class="sec" id="proceso">
+      <div class="sec-num azul">Arts. 66 y ss — Etapas</div>
+      <h2 class="sec-h">El proceso penal <em class="azul">paso a paso</em></h2>
+      <p class="sec-intro">El sistema acusatorio colombiano divide el proceso en etapas claramente definidas. Cada una tiene un objetivo especifico y termina con una decision o audiencia.</p>
+      <div class="cgrid">
+        <div class="ccard"><div class="cicon">🔍</div><div class="cname">1. Indagacion</div><div class="cdef">La Fiscalia investiga sin vinculacion formal del imputado. No hay investigado oficial — solo se recopila informacion.</div><div class="cart azul">Art. 200 y ss</div></div>
+        <div class="ccard"><div class="cicon">⚡</div><div class="cname">2. Investigacion</div><div class="cdef">Comienza con la formulacion de imputacion. El imputado queda vinculado formalmente al proceso.</div><div class="cart azul">Art. 280 y ss</div></div>
+        <div class="ccard"><div class="cicon">📋</div><div class="cname">3. Juicio oral</div><div class="cdef">Debate publico ante juez. Se practican pruebas, se oyen alegatos y se dicta sentencia.</div><div class="cart azul">Art. 366 y ss</div></div>
       </div>
+    </section>
 
-      <div class="accordion" style="margin-bottom:24px">
-        <div class="accordion-item">
-          <button class="accordion-btn" onclick="toggleAcc(this)">
-            <div><div class="accordion-label">Interrupcion de la prescripcion</div><div class="accordion-sub">Reinicia el conteo desde cero</div></div>
-            <div style="display:flex;align-items:center;gap:10px"><span class="accordion-art">Art. 86</span><span class="accordion-icon">+</span></div>
-          </button>
-          <div class="accordion-body">
-            <p style="font-size:14px;color:var(--texto2);line-height:1.7;margin-bottom:12px">La prescripcion se interrumpe con la formulacion de la imputacion. A partir de ese momento empieza a correr un nuevo termino igual a la mitad del inicial, sin ser inferior a 5 anos.</p>
-            <div class="bloque"><strong>Efecto:</strong> Delito con pena maxima de 12 anos → prescripcion = 12 anos. Se formula imputacion → nuevo termino = 6 anos (mitad) desde la imputacion.</div>
+    <!-- AUDIENCIAS -->
+    <section class="sec" id="audiencias">
+      <div class="sec-num azul">Ley 906 — Audiencias</div>
+      <h2 class="sec-h">Las audiencias <em class="azul">explicadas</em></h2>
+      <p class="sec-intro">Cada audiencia tiene un proposito especifico. Entender que pasa en cada una es clave para comprender el proceso.</p>
+      <div class="acc">
+        <div class="acc-item">
+          <button class="acc-btn azul" onclick="A(this)"><div><div class="acc-label">Formulacion de Imputacion</div><div class="acc-sub">Primera vinculacion formal del investigado</div></div><div style="display:flex;align-items:center;gap:8px"><span class="acc-art azul">Art. 286</span><span class="acc-icon">+</span></div></button>
+          <div class="acc-body">
+            <p style="margin-bottom:10px">La Fiscalia comunica al imputado los hechos y delitos que le atribuye. <strong>No es un juicio</strong> — es un acto de comunicacion. El imputado no declara.</p>
+            <ul class="lista azul">
+              <li><strong>Efectos:</strong> interrumpe la prescripcion de la accion penal</li>
+              <li><strong>Efectos:</strong> vincula formalmente al proceso — ya hay imputado</li>
+              <li><strong>Efectos:</strong> empieza a correr el termino de la investigacion (30 dias para medida de aseguramiento)</li>
+              <li><strong>Allanamiento:</strong> el imputado puede allanarse a cargos — rebaja hasta 50%</li>
+            </ul>
+            <div class="blq azul" style="margin-top:10px"><strong>Diferencia clave:</strong> Imputacion ≠ acusacion. En la imputacion la Fiscalia no tiene que demostrar nada — solo inferencia razonable. En la acusacion debe tener elementos suficientes para ir a juicio.</div>
           </div>
         </div>
-        <div class="accordion-item">
-          <button class="accordion-btn" onclick="toggleAcc(this)">
-            <div><div class="accordion-label">Suspension de la prescripcion</div><div class="accordion-sub">El termino se detiene temporalmente</div></div>
-            <div style="display:flex;align-items:center;gap:10px"><span class="accordion-art">Art. 84</span><span class="accordion-icon">+</span></div>
-          </button>
-          <div class="accordion-body">
-            <ul class="lista-concepto">
-              <li>Cuando se declara la preclucion de la investigacion por enfermedad mental transitoria del imputado</li>
-              <li>Resolucion inhibitoria o preclucion revocada posteriormente</li>
-              <li>Tramite de extradicion del procesado</li>
+        <div class="acc-item">
+          <button class="acc-btn azul" onclick="A(this)"><div><div class="acc-label">Acusacion</div><div class="acc-sub">La Fiscalia anuncia que va a juicio</div></div><div style="display:flex;align-items:center;gap:8px"><span class="acc-art azul">Art. 336</span><span class="acc-icon">+</span></div></button>
+          <div class="acc-body">
+            <p style="margin-bottom:10px">La Fiscalia presenta escrito de acusacion cuando tiene elementos materiales probatorios suficientes para demostrar la conducta en juicio.</p>
+            <ul class="lista azul">
+              <li>El escrito debe contener: individualizacion del acusado, narracion de hechos, delitos atribuidos y pruebas</li>
+              <li>La defensa puede hacer observaciones al escrito</li>
+              <li>El acusado puede aceptar cargos — rebaja hasta 40% (menos que en imputacion)</li>
             </ul>
           </div>
         </div>
+        <div class="acc-item">
+          <button class="acc-btn azul" onclick="A(this)"><div><div class="acc-label">Audiencia preparatoria</div><div class="acc-sub">Se define que pruebas se practicaran en juicio</div></div><div style="display:flex;align-items:center;gap:8px"><span class="acc-art azul">Art. 355</span><span class="acc-icon">+</span></div></button>
+          <div class="acc-body">
+            <p style="margin-bottom:10px">Etapa previa al juicio donde se depuran las pruebas: se solicitan, se debaten y el juez decide cuales son admisibles.</p>
+            <ul class="lista azul">
+              <li>Estipulaciones probatorias: hechos que ambas partes aceptan — no se debaten en juicio</li>
+              <li>Exclusion de prueba ilicita (Art. 23 — regla de exclusion)</li>
+              <li>El acusado puede aceptar cargos — rebaja hasta 35%</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-btn azul" onclick="A(this)"><div><div class="acc-label">Juicio oral</div><div class="acc-sub">El debate probatorio ante el juez</div></div><div style="display:flex;align-items:center;gap:8px"><span class="acc-art azul">Art. 366</span><span class="acc-icon">+</span></div></button>
+          <div class="acc-body">
+            <ul class="lista azul">
+              <li><strong>Alegatos de apertura:</strong> Fiscalia presenta su teoria del caso — defensa presenta la suya</li>
+              <li><strong>Practica de pruebas:</strong> testimonios, documentos, pericias — con contrainterrogatorio</li>
+              <li><strong>Alegatos de conclusion:</strong> cada parte argumenta por que gano</li>
+              <li><strong>Sentido del fallo:</strong> el juez anuncia si condena o absuelve (en ese momento)</li>
+              <li><strong>Lectura de sentencia:</strong> dentro de los 15 dias siguientes</li>
+            </ul>
+            <div class="blq verde" style="margin-top:10px"><strong>Principio de inmediacion:</strong> El juez que practica las pruebas debe ser el mismo que dicta la sentencia. No puede haber jueces suplentes en el juicio oral.</div>
+          </div>
+        </div>
       </div>
 
-      <!-- CALCULADORA -->
-      <h3 style="font-family:'Lora',serif;font-size:20px;font-weight:700;margin-bottom:20px;color:var(--texto)">Calculadora de prescripcion</h3>
+      <div class="quiz" id="q2">
+        <div class="quiz-q" style="color:var(--azul)">🧐 En la audiencia de formulacion de imputacion, que puede hacer el imputado para obtener la mayor rebaja de pena posible?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt azul" onclick="QR('q2',this,'mal')"><span class="quiz-letra">A</span>Nada — la imputacion es solo de la Fiscalia</button>
+          <button class="quiz-opt azul" onclick="QR('q2',this,'ok')"><span class="quiz-letra">B</span>Allanarse a los cargos — rebaja hasta el 50%</button>
+          <button class="quiz-opt azul" onclick="QR('q2',this,'mal')"><span class="quiz-letra">C</span>Aceptar cargos — rebaja del 40%</button>
+          <button class="quiz-opt azul" onclick="QR('q2',this,'mal')"><span class="quiz-letra">D</span>Solicitar preacuerdo con la Fiscalia</button>
+        </div>
+        <div class="quiz-fb ok" id="q2-ok" style="display:none">✓ Correcto. El allanamiento en imputacion da la mayor rebaja — hasta el 50%. Conforme avanza el proceso, la rebaja disminuye: 40% en acusacion, 35% en preparatoria. Es el incentivo para colaborar temprano.</div>
+        <div class="quiz-fb mal" id="q2-mal" style="display:none">✗ Incorrecto. En la imputacion SÍ puede actuar el imputado — puede allanarse a cargos obteniendo hasta 50% de rebaja. Es el momento de mayor beneficio en todo el proceso.</div>
+        <button class="quiz-reset" onclick="QReset('q2')">Intentar de nuevo</button>
+      </div>
+    </section>
+
+    <!-- MEDIDAS DE ASEGURAMIENTO -->
+    <section class="sec" id="medidas">
+      <div class="sec-num azul">Arts. 306–320</div>
+      <h2 class="sec-h">Medidas de <em class="azul">Aseguramiento</em></h2>
+      <p class="sec-intro">La medida de aseguramiento no es una pena — es una herramienta cautelar para garantizar la comparecencia del imputado y la no repeticion del delito.</p>
+      <div class="cgrid">
+        <div class="ccard"><div class="cicon">🏠</div><div class="cname">Privativas de libertad</div><div class="cdef">Detencion preventiva en establecimiento carcelario o en la residencia (domiciliaria). La mas gravosa.</div><div class="cart azul">Art. 307-a</div></div>
+        <div class="ccard"><div class="cicon">📍</div><div class="cname">No privativas de libertad</div><div class="cdef">Obligacion de presentarse, prohibicion de salir del pais, prohibicion de acercarse a lugares o personas.</div><div class="cart azul">Art. 307-b</div></div>
+      </div>
+      <div class="acc" style="margin-top:4px">
+        <div class="acc-item">
+          <button class="acc-btn azul" onclick="A(this)"><div><div class="acc-label">Requisitos para imponerla</div><div class="acc-sub">Tres elementos copulativos — deben concurrir todos</div></div><span class="acc-icon">+</span></button>
+          <div class="acc-body">
+            <ul class="lista azul">
+              <li><strong>Inferencia razonable de autoria:</strong> elementos que vinculan al imputado con el delito</li>
+              <li><strong>Necesidad:</strong> para evitar obstruccion de la justicia, garantizar comparecencia o impedir repeticion</li>
+              <li><strong>Proporcionalidad:</strong> la medida debe ser adecuada a la gravedad del delito</li>
+            </ul>
+            <div class="blq morado" style="margin-top:10px"><strong>Principio de excepcionalidad:</strong> La detencion preventiva es la ultima ratio — primero deben agotarse medidas menos gravosas. La libertad es la regla, la detencion la excepcion.</div>
+          </div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-btn azul" onclick="A(this)"><div><div class="acc-label">Detencion preventiva en establecimiento</div><div class="acc-sub">La medida mas grave del sistema</div></div><div style="display:flex;align-items:center;gap:8px"><span class="acc-art azul">Art. 313</span><span class="acc-icon">+</span></div></button>
+          <div class="acc-body">
+            <p style="margin-bottom:10px">Solo procede en casos especificos del Art. 313: delitos investigados de oficio con pena minima de 4 anos, cuando hay incumplimiento de medida anterior, o en delitos expresamente senalados.</p>
+            <div class="blq amarillo"><strong>Vencimiento de terminos (Art. 317):</strong> Si la Fiscalia no formula acusacion dentro del termino legal, el imputado tiene derecho a recuperar la libertad aunque siga el proceso.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DERECHOS DEL IMPUTADO -->
+    <section class="sec" id="derechos">
+      <div class="sec-num azul">Arts. 8–11 — Garantias</div>
+      <h2 class="sec-h">Derechos del <em class="azul">Imputado y Acusado</em></h2>
+      <p class="sec-intro">El sistema acusatorio colombiano reconoce garantias fundamentales en favor de quien es investigado o acusado. Estas no pueden renunciarse y su violacion genera nulidad.</p>
+      <ul class="lista azul">
+        <li><strong>No autoincriminacion (Art. 8-b):</strong> derecho a guardar silencio. El silencio NO puede valorarse como indicio de responsabilidad.</li>
+        <li><strong>Defensa tecnica (Art. 8-e):</strong> derecho a abogado desde el primer acto de investigacion. Si no tiene, el Estado le asigna defensor publico.</li>
+        <li><strong>Conocer los cargos (Art. 8-a):</strong> informado de los hechos y delitos que se le atribuyen en lenguaje comprensible.</li>
+        <li><strong>Contradiccion (Art. 8-k):</strong> derecho a contrainterrogar los testigos de cargo y a presentar pruebas de descargo.</li>
+        <li><strong>Juez natural (Art. 29 C.P.):</strong> ser juzgado por el juez competente previamente determinado por la ley.</li>
+        <li><strong>Non bis in idem (Art. 8-i):</strong> no ser juzgado dos veces por el mismo hecho — aunque sea absuelto o condenado.</li>
+        <li><strong>Presuncion de inocencia (Art. 7):</strong> se presume inocente hasta que no haya sentencia condenatoria en firme.</li>
+        <li><strong>Juicio publico sin dilaciones (Art. 8-c):</strong> derecho a que el proceso se resuelva en un plazo razonable.</li>
+      </ul>
+      <div class="blq verde" style="margin-top:14px"><strong>Nulidad por violacion de garantias (Art. 457):</strong> Si durante el proceso se viola el derecho de defensa o el debido proceso de forma sustancial, el juez debe declarar nulidad de lo actuado y retrotraer el proceso al momento de la violacion.</div>
+    </section>
+
+    <!-- ══ HERRAMIENTAS ══ -->
+
+    <!-- LINEA DE TIEMPO -->
+    <section class="sec" id="timeline">
+      <div class="sec-num azul">Herramienta interactiva</div>
+      <h2 class="sec-h">Linea de tiempo del <em class="azul">Proceso Penal</em></h2>
+      <p class="sec-intro">Haz clic en cada etapa para ver que pasa, cuanto dura y que derechos aplican.</p>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot done"><div class="tl-num">1</div></div>
+          <div class="tl-body" onclick="TL(this)">
+            <div class="tl-header"><div><div class="tl-etapa">🔍 Noticia criminal / Denuncia</div><div class="tl-desc">El proceso comienza cuando la Fiscalia tiene conocimiento del delito</div></div><div class="tl-art">Art. 69</div></div>
+            <div class="tl-detail">Puede llegar por denuncia, querella, peticion especial o de oficio. La Fiscalia decide si inicia indagacion preliminar. <strong>No hay imputado aun.</strong> El ciudadano puede denunciar en cualquier URI o Fiscalia del pais.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot done"><div class="tl-num">2</div></div>
+          <div class="tl-body" onclick="TL(this)">
+            <div class="tl-header"><div><div class="tl-etapa">🕵️ Indagacion</div><div class="tl-desc">Fiscalia investiga — sin imputado formal</div></div><div class="tl-art">Art. 200</div></div>
+            <div class="tl-detail">La Fiscalia recolecta elementos materiales probatorios (EMP) y evidencia fisica (EF). Puede durar meses o anos. El investigado no tiene aun garantias formales de imputado. <strong>Termina cuando la Fiscalia formula imputacion o archiva.</strong></div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot done"><div class="tl-num">3</div></div>
+          <div class="tl-body" onclick="TL(this)">
+            <div class="tl-header"><div><div class="tl-etapa">⚡ Formulacion de Imputacion</div><div class="tl-desc">Primera audiencia — vinculacion formal</div></div><div class="tl-art">Art. 286</div></div>
+            <div class="tl-detail"><strong>Interrompe la prescripcion.</strong> El imputado adquiere todos sus derechos procesales. Puede allanarse a cargos (hasta 50% rebaja). La Fiscalia no prueba — solo comunica inferencia razonable. Desde aqui: 30 dias para solicitar medida de aseguramiento.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot done"><div class="tl-num">4</div></div>
+          <div class="tl-body" onclick="TL(this)">
+            <div class="tl-header"><div><div class="tl-etapa">🔒 Medida de aseguramiento (si procede)</div><div class="tl-desc">Audiencia ante juez de control de garantias</div></div><div class="tl-art">Art. 306</div></div>
+            <div class="tl-detail">La Fiscalia solicita — el Juez de Control de Garantias decide. <strong>No es automatica.</strong> El imputado puede oponerse con abogado. Si es privativa de libertad, el imputado puede ser detenido en ese acto. Revision cada 6 meses.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot done"><div class="tl-num">5</div></div>
+          <div class="tl-body" onclick="TL(this)">
+            <div class="tl-header"><div><div class="tl-etapa">📋 Escrito de Acusacion</div><div class="tl-desc">La Fiscalia decide ir a juicio</div></div><div class="tl-art">Art. 336</div></div>
+            <div class="tl-detail">Debe presentarse dentro de los 90 dias siguientes a la imputacion (si hay detenido) o 30 dias (si hay detencion domiciliaria). Contiene hechos, delitos, pruebas. Aceptacion de cargos: hasta 40% de rebaja.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot done"><div class="tl-num">6</div></div>
+          <div class="tl-body" onclick="TL(this)">
+            <div class="tl-header"><div><div class="tl-etapa">📝 Audiencia Preparatoria</div><div class="tl-desc">Se deciden las pruebas del juicio</div></div><div class="tl-art">Art. 355</div></div>
+            <div class="tl-detail">El juez de conocimiento decide que pruebas son admisibles. Se pueden excluir pruebas ilegales. Estipulaciones probatorias. Aceptacion de cargos: hasta 35% de rebaja. <strong>Ultima oportunidad para negociar.</strong></div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot done"><div class="tl-num">7</div></div>
+          <div class="tl-body" onclick="TL(this)">
+            <div class="tl-header"><div><div class="tl-etapa">⚖️ Juicio Oral</div><div class="tl-desc">El debate final ante el juez</div></div><div class="tl-art">Art. 366</div></div>
+            <div class="tl-detail">Alegatos de apertura → practica de pruebas → contrainterrogatorio → alegatos de conclusion → sentido del fallo. El juez anuncia si condena o absuelve. <strong>La sentencia se lee en los 15 dias siguientes.</strong></div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot done"><div class="tl-num">8</div></div>
+          <div class="tl-body" onclick="TL(this)">
+            <div class="tl-header"><div><div class="tl-etapa">📄 Sentencia y recursos</div><div class="tl-desc">Condena, absolucion y posibles apelaciones</div></div><div class="tl-art">Art. 444</div></div>
+            <div class="tl-detail">La sentencia condenatoria o absolutoria puede apelarse ante el Tribunal Superior. Si es tribunal, ante la Corte Suprema de Justicia. Casacion ante la Corte Suprema en casos especiales. <strong>Sentencia en firme = cosa juzgada.</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARADOR -->
+    <section class="sec" id="comparador">
+      <div class="sec-num">Herramienta</div>
+      <h2 class="sec-h">Comparador de <em>Delitos y Penas</em></h2>
+      <p class="sec-intro">Selecciona dos delitos para comparar sus penas, bienes juridicos y caracteristicas.</p>
+      <div class="comp-wrap">
+        <div class="comp-col">
+          <div class="comp-header rojo">Delito A</div>
+          <select class="comp-select" id="del-a" onchange="comparar()">
+            <option value="">Selecciona un delito...</option>
+            <option value="homicidio">Homicidio simple (Art. 103)</option>
+            <option value="homicidio_agrav">Homicidio agravado (Art. 104)</option>
+            <option value="lesiones">Lesiones personales (Art. 111)</option>
+            <option value="hurto">Hurto simple (Art. 239)</option>
+            <option value="hurto_agrav">Hurto agravado (Art. 240)</option>
+            <option value="extorsion">Extorsion (Art. 244)</option>
+            <option value="secuestro">Secuestro simple (Art. 168)</option>
+            <option value="trafico">Trafico de estupefacientes (Art. 376)</option>
+            <option value="concierto">Concierto para delinquir (Art. 340)</option>
+            <option value="peculado">Peculado por apropiacion (Art. 397)</option>
+            <option value="cohecho">Cohecho propio (Art. 405)</option>
+            <option value="violencia_int">Violencia intrafamiliar (Art. 229)</option>
+          </select>
+          <div class="comp-body" id="comp-a-body"><p style="font-size:12px;color:var(--texto3);text-align:center;padding:20px 0">Selecciona un delito arriba</p></div>
+        </div>
+        <div class="comp-mid"></div>
+        <div class="comp-col">
+          <div class="comp-header azul">Delito B</div>
+          <select class="comp-select" id="del-b" onchange="comparar()">
+            <option value="">Selecciona un delito...</option>
+            <option value="homicidio">Homicidio simple (Art. 103)</option>
+            <option value="homicidio_agrav">Homicidio agravado (Art. 104)</option>
+            <option value="lesiones">Lesiones personales (Art. 111)</option>
+            <option value="hurto">Hurto simple (Art. 239)</option>
+            <option value="hurto_agrav">Hurto agravado (Art. 240)</option>
+            <option value="extorsion">Extorsion (Art. 244)</option>
+            <option value="secuestro">Secuestro simple (Art. 168)</option>
+            <option value="trafico">Trafico de estupefacientes (Art. 376)</option>
+            <option value="concierto">Concierto para delinquir (Art. 340)</option>
+            <option value="peculado">Peculado por apropiacion (Art. 397)</option>
+            <option value="cohecho">Cohecho propio (Art. 405)</option>
+            <option value="violencia_int">Violencia intrafamiliar (Art. 229)</option>
+          </select>
+          <div class="comp-body" id="comp-b-body"><p style="font-size:12px;color:var(--texto3);text-align:center;padding:20px 0">Selecciona un delito arriba</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GLOSARIO -->
+    <section class="sec" id="glosario">
+      <div class="sec-num">Referencia</div>
+      <h2 class="sec-h">Glosario de <em>Terminos Penales</em></h2>
+      <p class="sec-intro">Los terminos juridicos mas usados explicados en lenguaje claro.</p>
+      <input class="glos-search" id="glos-input" type="text" placeholder="Buscar termino..." oninput="buscarGlos()">
+      <div class="glos-grid" id="glos-grid"></div>
+    </section>
+
+    <!-- PRESCRIPCION -->
+    <section class="sec" id="prescripcion">
+      <div class="sec-num">Arts. 83–86 — Ley 599</div>
+      <h2 class="sec-h">Calculadora de <em>Prescripcion</em></h2>
+      <p class="sec-intro">Calcula el termino de prescripcion segun la pena maxima, calidad del autor y etapa procesal. Basado en el Art. 83 del Codigo Penal.</p>
       <div class="calc-card">
         <div class="calc-grid">
-          <div class="calc-field">
-            <label class="calc-label">Pena maxima del delito (anos)</label>
-            <input class="calc-input" type="number" id="pena-max" placeholder="Ej: 12" min="1" max="60">
-          </div>
-          <div class="calc-field">
-            <label class="calc-label">Servidor publico en ejercicio</label>
-            <select class="calc-select" id="servidor">
-              <option value="no">No</option>
-              <option value="si">Si — aumenta 1/3</option>
-            </select>
-          </div>
-          <div class="calc-field">
-            <label class="calc-label">Fecha de comision del delito</label>
-            <input class="calc-input" type="date" id="fecha-delito">
-          </div>
-          <div class="calc-field">
-            <label class="calc-label">Etapa procesal actual</label>
-            <select class="calc-select" id="etapa">
-              <option value="investigacion">Investigacion (termino ordinario)</option>
-              <option value="juzgamiento">Juzgamiento (termino reducido a la mitad)</option>
-            </select>
-          </div>
+          <div><label class="calc-label">Pena maxima del delito (anos)</label><input class="calc-input" type="number" id="pena-max" placeholder="Ej: 12" min="1" max="60"></div>
+          <div><label class="calc-label">Servidor publico en ejercicio</label><select class="calc-select" id="servidor"><option value="no">No</option><option value="si">Si — aumenta 1/3</option></select></div>
+          <div><label class="calc-label">Fecha de comision del delito</label><input class="calc-input" type="date" id="fecha-delito"></div>
+          <div><label class="calc-label">Etapa procesal actual</label><select class="calc-select" id="etapa"><option value="inv">Investigacion (termino ordinario)</option><option value="juz">Juzgamiento (se reduce a la mitad)</option></select></div>
         </div>
-        <button class="calc-btn" onclick="calcularPrescripcion()">Calcular prescripcion</button>
+        <button class="calc-btn" onclick="calcPres()">Calcular prescripcion →</button>
         <div class="calc-result" id="calc-result">
-          <div class="result-row"><span class="result-key">Termino base de prescripcion</span><span class="result-val" id="r-base">-</span></div>
-          <div class="result-row"><span class="result-key">Termino aplicable segun etapa</span><span class="result-val" id="r-termino">-</span></div>
-          <div class="result-row"><span class="result-key">Fecha de prescripcion</span><span class="result-val" id="r-fecha">-</span></div>
-          <div class="result-row"><span class="result-key">Tiempo restante</span><span class="result-val" id="r-restante">-</span></div>
-          <div class="result-row"><span class="result-key">Estado</span><span class="result-val" id="r-estado">-</span></div>
-          <p class="calc-nota">Calculo orientativo basado en el Art. 83 C.P. No reemplaza el analisis juridico concreto. Considere causales de interrupcion (Art. 86) y suspension (Art. 84) aplicables al caso.</p>
+          <div class="rrow"><span class="rkey">Termino base</span><span class="rval" id="r-base">-</span></div>
+          <div class="rrow"><span class="rkey">Termino aplicable</span><span class="rval" id="r-termino">-</span></div>
+          <div class="rrow"><span class="rkey">Fecha de prescripcion</span><span class="rval" id="r-fecha">-</span></div>
+          <div class="rrow"><span class="rkey">Tiempo restante</span><span class="rval" id="r-restante">-</span></div>
+          <div class="rrow"><span class="rkey">Estado</span><span class="rval" id="r-estado">-</span></div>
+          <p class="calc-nota">Calculo orientativo Art. 83 C.P. Considere causales de interrupcion (Art. 86) y suspension (Art. 84). No reemplaza el analisis juridico concreto.</p>
         </div>
       </div>
     </section>
@@ -725,91 +778,145 @@ footer{background:var(--papel);border-top:1px solid var(--borde);padding:40px 32
   </main>
 </div>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">The <span>Law Lover</span></div>
-  <p class="footer-note">Contenido informativo y academico sobre derecho penal colombiano basado en la Ley 599 de 2000. No constituye asesoria juridica. Las opiniones son personales y no representan institucion alguna.</p>
-  <p class="footer-copy">The Law Lover &copy; 2026 — Derecho Penal Colombiano</p>
+  <div class="ft-logo">The <span>Law Lover</span></div>
+  <p class="ft-note">Contenido informativo y academico basado en la Ley 599 de 2000 y la Ley 906 de 2004. No constituye asesoria juridica. Las opiniones son personales y no representan institucion alguna.</p>
+  <p class="ft-copy">The Law Lover &copy; 2026 — Derecho Penal Colombiano</p>
 </footer>
 
 <script>
-// ACCORDION
-function toggleAcc(btn){
-  var wasOpen=btn.classList.contains("open");
-  document.querySelectorAll(".accordion-btn.open").forEach(function(b){b.classList.remove("open");});
-  if(!wasOpen)btn.classList.add("open");
+// DATOS DELITOS
+var DELITOS={
+  homicidio:{nombre:"Homicidio simple",art:"Art. 103",bien:"Vida",penaMin:"13 anos",penaMax:"25 anos",prescripcion:"20 anos",agravantes:"No",domiciliaria:"No (Art. 68A)",acusatorio:"Si",dolo:"Doloso"},
+  homicidio_agrav:{nombre:"Homicidio agravado",art:"Art. 104",bien:"Vida",penaMin:"25 anos",penaMax:"40 anos",prescripcion:"20 anos",agravantes:"Si — multiples",domiciliaria:"No (Art. 68A)",acusatorio:"Si",dolo:"Doloso"},
+  lesiones:{nombre:"Lesiones personales",art:"Art. 111",bien:"Integridad personal",penaMin:"16 meses",penaMax:"12 anos",prescripcion:"12 anos",agravantes:"Si",domiciliaria:"Posible",acusatorio:"Si",dolo:"Doloso/Culposo"},
+  hurto:{nombre:"Hurto simple",art:"Art. 239",bien:"Patrimonio economico",penaMin:"16 meses",penaMax:"6 anos",prescripcion:"6 anos",agravantes:"No",domiciliaria:"Posible",acusatorio:"Si",dolo:"Doloso"},
+  hurto_agrav:{nombre:"Hurto agravado",art:"Art. 240",bien:"Patrimonio economico",penaMin:"6 anos",penaMax:"14 anos",prescripcion:"14 anos",agravantes:"Si",domiciliaria:"Segun monto",acusatorio:"Si",dolo:"Doloso"},
+  extorsion:{nombre:"Extorsion",art:"Art. 244",bien:"Patrimonio / Libertad",penaMin:"12 anos",penaMax:"16 anos",prescripcion:"16 anos",agravantes:"Si",domiciliaria:"No (Art. 68A)",acusatorio:"Si",dolo:"Doloso"},
+  secuestro:{nombre:"Secuestro simple",art:"Art. 168",bien:"Libertad individual",penaMin:"16 anos",penaMax:"30 anos",prescripcion:"20 anos",agravantes:"Si",domiciliaria:"No (Art. 68A)",acusatorio:"Si",dolo:"Doloso"},
+  trafico:{nombre:"Trafico estupefacientes",art:"Art. 376",bien:"Salud publica",penaMin:"10 anos 8 meses",penaMax:"30 anos",prescripcion:"20 anos",agravantes:"Si",domiciliaria:"No (Art. 68A)",acusatorio:"Si",dolo:"Doloso"},
+  concierto:{nombre:"Concierto para delinquir",art:"Art. 340",bien:"Seguridad publica",penaMin:"8 anos",penaMax:"16 anos",prescripcion:"16 anos",agravantes:"Si — agravado",domiciliaria:"No (Art. 68A)",acusatorio:"Si",dolo:"Doloso"},
+  peculado:{nombre:"Peculado por apropiacion",art:"Art. 397",bien:"Administracion publica",penaMin:"9 anos",penaMax:"27 anos",prescripcion:"20 anos",agravantes:"Si",domiciliaria:"No",acusatorio:"Si",dolo:"Doloso"},
+  cohecho:{nombre:"Cohecho propio",art:"Art. 405",bien:"Administracion publica",penaMin:"5 anos",penaMax:"9 anos",prescripcion:"9 anos +1/3",agravantes:"Si",domiciliaria:"No",acusatorio:"Si",dolo:"Doloso"},
+  violencia_int:{nombre:"Violencia intrafamiliar",art:"Art. 229",bien:"Familia / Integridad",penaMin:"4 anos",penaMax:"8 anos",prescripcion:"8 anos",agravantes:"Si",domiciliaria:"Segun caso",acusatorio:"Si",dolo:"Doloso/Culposo"}
+};
+
+function comparar(){
+  var da=document.getElementById("del-a").value;
+  
+  var db=document.getElementById("del-b").value;
+  renderComp("comp-a-body",da);
+  renderComp("comp-b-body",db);
+}
+function renderComp(id,key){
+  var el=document.getElementById(id);
+  if(!key){el.innerHTML='<p style="font-size:12px;color:var(--texto3);text-align:center;padding:20px 0">Selecciona un delito arriba</p>';return;}
+  var d=DELITOS[key];
+  var rows=[["Articulo",d.art],["Bien juridico",d.bien],["Pena minima",d.penaMin],["Pena maxima",d.penaMax],["Prescripcion",d.prescripcion],["Agravantes",d.agravantes],["Domiciliaria",d.domiciliaria],["Culpabilidad",d.dolo]];
+  el.innerHTML=rows.map(function(r){return'<div class="comp-row"><span class="comp-key">'+r[0]+'</span><span class="comp-val">'+r[1]+'</span></div>';}).join("");
 }
 
-// QUIZ
-function responder(id,btn,tipo){
-  var wrap=document.getElementById(id);
-  if(wrap.querySelector(".correcto")||wrap.querySelector(".incorrecto"))return;
-  wrap.querySelectorAll(".quiz-opt").forEach(function(o){o.style.pointerEvents="none";});
-  btn.classList.add(tipo==="ok"?"correcto":"incorrecto");
-  var fb=document.getElementById(id+"-"+tipo);
-  if(fb){fb.classList.add("show");}
-}
-function resetQuiz(id){
-  var wrap=document.getElementById(id);
-  wrap.querySelectorAll(".quiz-opt").forEach(function(o){o.classList.remove("correcto","incorrecto");o.style.pointerEvents="";});
-  wrap.querySelectorAll(".quiz-feedback").forEach(function(f){f.classList.remove("show");});
-}
+var GLOSARIO=[
+  {t:"Accion penal",d:"Facultad del Estado de investigar y sancionar conductas delictivas. Se ejerce de oficio o a peticion de parte.",a:"Art. 66 Ley 906"},
+  {t:"Allanamiento a cargos",d:"Aceptacion voluntaria de los cargos formulados. Da rebajas de pena segun la etapa: 50% imputacion, 40% acusacion, 35% preparatoria.",a:"Art. 351 Ley 906"},
+  {t:"Antijuridicidad",d:"Segundo elemento del delito. La conducta tipica debe lesionar o poner en peligro real un bien juridico tutelado.",a:"Art. 11 Ley 599"},
+  {t:"Bien juridico",d:"Valor o interes protegido por la norma penal: vida, libertad, patrimonio, administracion publica, etc.",a:"Art. 11 Ley 599"},
+  {t:"Cadena de custodia",d:"Procedimiento que garantiza la autenticidad e inalterabilidad de los elementos materiales probatorios recolectados.",a:"Art. 254 Ley 906"},
+  {t:"Casacion",d:"Recurso extraordinario ante la Corte Suprema para corregir errores de derecho en sentencias de segunda instancia.",a:"Art. 180 Ley 906"},
+  {t:"Congruencia",d:"Principio que exige que la sentencia solo pueda referirse a los hechos y cargos contenidos en el escrito de acusacion.",a:"Art. 448 Ley 906"},
+  {t:"Control de garantias",d:"Juez especial que controla la legalidad de los actos de investigacion que afecten derechos fundamentales.",a:"Art. 39 Ley 906"},
+  {t:"Culpabilidad",d:"Tercer elemento del delito. Juicio de reproche al autor por haber actuado con dolo, culpa o preterintencion.",a:"Art. 12 Ley 599"},
+  {t:"Dolo",d:"Conocer y querer la realizacion de la conducta tipica. Es la forma mas grave de culpabilidad.",a:"Art. 22 Ley 599"},
+  {t:"EMP / EF",d:"Elemento material probatorio y evidencia fisica. Objetos, documentos y registros recolectados en la investigacion.",a:"Art. 275 Ley 906"},
+  {t:"Error de prohibicion",d:"Causal de ausencia de responsabilidad cuando el agente cree erroneamente que su conducta esta permitida.",a:"Art. 32-11 Ley 599"},
+  {t:"Estipulacion probatoria",d:"Acuerdo entre Fiscalia y defensa para dar por probados hechos que no se debatiran en juicio oral.",a:"Art. 356-4 Ley 906"},
+  {t:"Flagrancia",d:"Situacion en que el autor es sorprendido en el momento de cometer el delito o inmediatamente despues.",a:"Art. 301 Ley 906"},
+  {t:"Imputabilidad",d:"Capacidad de comprender la ilicitud de la conducta y determinarse segun esa comprension.",a:"Art. 33 Ley 599"},
+  {t:"In dubio pro reo",d:"Principio que ordena absolver cuando persiste duda razonable sobre la responsabilidad del acusado.",a:"Art. 7 Ley 906"},
+  {t:"Inferencia razonable",d:"Estandar probatorio minimo para formular imputacion o imponer medida de aseguramiento.",a:"Art. 287 Ley 906"},
+  {t:"Medida de aseguramiento",d:"Restriccion cautelar de la libertad del imputado para garantizar su comparecencia y evitar la repeticion del delito.",a:"Art. 307 Ley 906"},
+  {t:"Non bis in idem",d:"Prohibicion de juzgar dos veces a una persona por el mismo hecho.",a:"Art. 8 Ley 906"},
+  {t:"Nulidad procesal",d:"Sancion por violacion de garantias fundamentales que invalida lo actuado y obliga a retrotraer el proceso.",a:"Art. 457 Ley 906"},
+  {t:"Preacuerdo",d:"Negociacion entre Fiscalia e imputado para modificar la calificacion juridica a cambio de rebajas de pena.",a:"Art. 350 Ley 906"},
+  {t:"Prescripcion",d:"Extincion de la accion penal por el transcurso del tiempo sin que el Estado ejerza su potestad punitiva.",a:"Art. 83 Ley 599"},
+  {t:"Presuncion de inocencia",d:"Toda persona se presume inocente hasta que no exista sentencia condenatoria en firme.",a:"Art. 7 Ley 906"},
+  {t:"Preterintencion",d:"El resultado causado supera la intencion del autor.",a:"Art. 24 Ley 599"},
+  {t:"Prueba de referencia",d:"Declaracion rendida fuera del juicio oral usada para demostrar la verdad de su contenido. Uso restringido.",a:"Art. 437 Ley 906"},
+  {t:"Tipicidad",d:"Primer elemento del delito. La conducta debe encajar en una descripcion legal preexistente.",a:"Art. 10 Ley 599"},
+  {t:"Vencimiento de terminos",d:"Causal de libertad cuando la Fiscalia no cumple los plazos del proceso estando el imputado detenido.",a:"Art. 317 Ley 906"},
+];
 
-// CALCULADORA
-function calcularPrescripcion(){
-  var penaMax=parseFloat(document.getElementById("pena-max").value);
-  var servidor=document.getElementById("servidor").value;
-  var fechaStr=document.getElementById("fecha-delito").value;
-  var etapa=document.getElementById("etapa").value;
-  if(!penaMax||!fechaStr){alert("Por favor completa todos los campos.");return;}
-  var termBase=Math.min(Math.max(penaMax,5),20);
-  if(servidor==="si")termBase=Math.min(termBase*(4/3),20);
-  termBase=Math.round(termBase*10)/10;
-  var termAplicable=etapa==="juzgamiento"?Math.max(termBase/2,5):termBase;
-  termAplicable=Math.round(termAplicable*10)/10;
-  var fechaDelito=new Date(fechaStr);
-  var fechaPres=new Date(fechaDelito);
-  fechaPres.setFullYear(fechaPres.getFullYear()+Math.floor(termAplicable));
-  fechaPres.setMonth(fechaPres.getMonth()+Math.round((termAplicable%1)*12));
-  var hoy=new Date();
-  var diffDias=Math.round((fechaPres-hoy)/(1000*60*60*24));
-  var prescrito=diffDias<0;
-  var fechaFormato=fechaPres.toLocaleDateString("es-CO",{day:"2-digit",month:"long",year:"numeric"});
-  document.getElementById("r-base").textContent=termBase+" anos";
-  document.getElementById("r-termino").textContent=termAplicable+" anos ("+(etapa==="juzgamiento"?"juzgamiento":"investigacion")+")";
-  document.getElementById("r-fecha").textContent=fechaFormato;
-  if(prescrito){
-    document.getElementById("r-restante").textContent="Prescrito hace "+Math.abs(diffDias)+" dias";
-    document.getElementById("r-restante").className="result-val warn";
-    document.getElementById("r-estado").textContent="PRESCRITO";
-    document.getElementById("r-estado").className="result-val warn";
-  }else{
-    document.getElementById("r-restante").textContent=Math.floor(diffDias/365)+" ano(s) y "+(diffDias%365)+" dias";
-    document.getElementById("r-restante").className="result-val ok";
-    document.getElementById("r-estado").textContent="VIGENTE";
-    document.getElementById("r-estado").className="result-val ok";
-  }
-  document.getElementById("calc-result").classList.add("visible");
-}
-
-// MOBILE MENU
-function toggleMenu(){document.getElementById("mobile-menu").classList.toggle("open");}
-
-// SIDEBAR ACTIVE
-var secciones=document.querySelectorAll(".seccion");
-var sideLinks=document.querySelectorAll(".sidebar-nav a");
-window.addEventListener("scroll",function(){
-  var bar=document.getElementById("reading-bar");
-  var h=document.documentElement;
-  var pct=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
-  bar.style.width=pct+"%";
-  var actual="";
-  secciones.forEach(function(s){if(s.getBoundingClientRect().top<=80)actual=s.id;});
-  sideLinks.forEach(function(a){
-    a.classList.remove("active");
-    if(a.getAttribute("href")==="#"+actual)a.classList.add("active");
+function renderGlosario(filtro){
+  var grid=document.getElementById("glos-grid");
+  grid.innerHTML="";
+  var q=(filtro||"").toLowerCase();
+  GLOSARIO.forEach(function(g){
+    var match=!q||g.t.toLowerCase().includes(q)||g.d.toLowerCase().includes(q);
+    var div=document.createElement("div");
+    div.className="glos-item"+(match?"":" hidden");
+    div.innerHTML="<div class=\"glos-term\">"+g.t+"</div><div class=\"glos-def\">"+g.d+"</div><div class=\"glos-art\">"+g.a+"</div>";
+    grid.appendChild(div);
   });
-},{ passive:true });
+}
+function buscarGlos(){renderGlosario(document.getElementById("glos-input").value);}
+renderGlosario();
+
+function A(btn){
+  var open=btn.classList.contains("open");
+  btn.closest(".acc").querySelectorAll(".acc-btn.open").forEach(function(b){b.classList.remove("open");});
+  if(!open)btn.classList.add("open");
+}
+function TL(el){el.classList.toggle("open");}
+function QR(id,btn,tipo){
+  var w=document.getElementById(id);
+  if(w.querySelector(".ok,.mal"))return;
+  w.querySelectorAll(".quiz-opt").forEach(function(o){o.style.pointerEvents="none";});
+  btn.classList.add(tipo);
+  var ok=document.getElementById(id+"-ok");
+  var mal=document.getElementById(id+"-mal");
+  if(ok)ok.style.display=tipo==="ok"?"block":"none";
+  if(mal)mal.style.display=tipo==="mal"?"block":"none";
+}
+function QReset(id){
+  var w=document.getElementById(id);
+  w.querySelectorAll(".quiz-opt").forEach(function(o){o.classList.remove("ok","mal");o.style.pointerEvents="";});
+  ["ok","mal"].forEach(function(t){var e=document.getElementById(id+"-"+t);if(e)e.style.display="none";});
+}
+function calcPres(){
+  var p=parseFloat(document.getElementById("pena-max").value);
+  var s=document.getElementById("servidor").value;
+  var f=document.getElementById("fecha-delito").value;
+  var e=document.getElementById("etapa").value;
+  if(!p||!f){alert("Completa todos los campos.");return;}
+  var b=Math.min(Math.max(p,5),20);
+  if(s==="si")b=Math.min(b*(4/3),20);
+  b=Math.round(b*10)/10;
+  var ta=e==="juz"?Math.max(b/2,5):b;
+  ta=Math.round(ta*10)/10;
+  var fd=new Date(f),fp=new Date(fd);
+  fp.setFullYear(fp.getFullYear()+Math.floor(ta));
+  fp.setMonth(fp.getMonth()+Math.round((ta%1)*12));
+  var dias=Math.round((fp-new Date())/864e5);
+  var pre=dias<0;
+  document.getElementById("r-base").textContent=b+" anos";
+  document.getElementById("r-termino").textContent=ta+" anos ("+(e==="juz"?"juzgamiento":"investigacion")+")";
+  document.getElementById("r-fecha").textContent=fp.toLocaleDateString("es-CO",{day:"2-digit",month:"long",year:"numeric"});
+  document.getElementById("r-restante").textContent=pre?"Prescrito hace "+Math.abs(dias)+" dias":Math.floor(dias/365)+" ano(s) y "+(dias%365)+" dias";
+  document.getElementById("r-restante").className="rval "+(pre?"warn":"ok");
+  document.getElementById("r-estado").textContent=pre?"PRESCRITO":"VIGENTE";
+  document.getElementById("r-estado").className="rval "+(pre?"warn":"ok");
+  document.getElementById("calc-result").classList.add("show");
+}
+function toggleMob(){document.getElementById("mob-menu").classList.toggle("open");}
+var secs=document.querySelectorAll("section[id],div[id='ley599'],div[id='ley906']");
+var sbLinks=document.querySelectorAll(".sb-nav a");
+window.addEventListener("scroll",function(){
+  var h=document.documentElement;
+  document.getElementById("rbar").style.width=((h.scrollTop/(h.scrollHeight-h.clientHeight))*100)+"%";
+  var cur="";
+  secs.forEach(function(s){if(s.getBoundingClientRect().top<=80)cur=s.id;});
+  sbLinks.forEach(function(a){a.classList.remove("act");if(a.getAttribute("href")==="#"+cur)a.classList.add("act");});
+},{passive:true});
 </script>
 </body>
 </html>
